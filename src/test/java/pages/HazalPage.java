@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.List;
+
 public class HazalPage {
 
     public HazalPage(){
@@ -36,6 +38,17 @@ public class HazalPage {
     @FindBy (xpath = "//span[text()='Logout']")
     public WebElement logoutButton;
 
+    @FindBy (xpath = "(//a[text()='Vaccinations'])[4]")
+    public WebElement headerVaccinations;
+
+    @FindBy (xpath = "(//a[text()='Vaccinations'])[3]")
+    public WebElement bodyVaccinations;
+
+    @FindBy (xpath = "//div[@class='filter_type']")
+    public List<WebElement> solListeAsiBasliklari;
+
+    @FindBy (xpath = "(//div[@class='row'])[2]")
+    public List<WebElement> anaBolumAsiBasliklari;
 
 
 
