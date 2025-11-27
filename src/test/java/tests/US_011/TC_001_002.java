@@ -43,7 +43,7 @@ public class TC_001_002 {
 
         Driver.quitDriver();
     }
-       // Departman detay sayfasında randevu alanlarının görünürlüğünü ve formun eksik doldurulduğunda uyarı verdiğini doğrulamak
+       //  randevu alanlarının formun eksik doldurulduğunda uyarı verdiğini doğrulamak
 
         @Test (dependsOnMethods = "siteyegirisTest")
         public void randevuolusturmaTesti() {
