@@ -28,6 +28,6 @@ public class WadoudPages {
         public WebElement invalidCredentialTextMessage;
 
         /* @FindBy()
-        public WebElement a; **/
+        public WebElement loginPage; **/
 
 }
