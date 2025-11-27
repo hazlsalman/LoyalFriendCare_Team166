@@ -27,4 +27,7 @@ public class WadoudPages {
         @FindBy (className = "invalid-feedback")
         public WebElement invalidCredentialTextMessage;
 
+        /* @FindBy()
+        public WebElement loginPage; **/
+
 }
