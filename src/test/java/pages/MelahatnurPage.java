@@ -30,6 +30,9 @@ public class MelahatnurPage {
     @FindBy(xpath = "//h5[text()='Appointment Booking']")
     public WebElement appointmentBookingYazisi ;
 
+    @FindBy(xpath = "//a[text() =' Sign Out']")
+    public WebElement signOutButonu;
+
 
 
 
