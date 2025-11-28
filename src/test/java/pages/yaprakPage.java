@@ -29,12 +29,36 @@ public class yaprakPage {
 
     //US_0014
 
-
-    // Departments Menu
     @FindBy(xpath = "//*[@id='menu']/ul/li[3]/span/a")
     public WebElement anasayfaDepartmentsMenu;
 
+    @FindBy(id = "Date")
+    public WebElement appointmentDateInput;
 
+    @FindBy(id = "serial")
+    public WebElement appointmentPhoneBox;
+
+    @FindBy(name = "problem")
+    public WebElement appointmentMessageArea;
+
+    @FindBy(xpath = "(//div[@class='nice-select wide'])[1]")
+    public WebElement appointmentDepartmentDD;
+
+    // Doktor dropdown
+    @FindBy(xpath = "(//div[@class='nice-select wide'])[2]")
+    public WebElement appointmentDoctorDD;
+
+    @FindBy(id = "submit-contact-detail")
+    public WebElement appointmentSubmitBtn;
+
+    @FindBy(xpath = "(//textarea[@placeholder='Create Message'])")
+    public WebElement getAppointmentCreateMessage;
+
+    @FindBy(xpath = "//div[@class='alert alert-success']")
+    public WebElement appointmentSuccessMessage;
+
+    @FindBy(xpath = "//div[@class='alert alert-success']")
+    public WebElement successMessage;
 
 
 
