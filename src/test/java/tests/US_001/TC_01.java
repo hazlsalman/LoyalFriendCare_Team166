@@ -1,6 +1,7 @@
 package tests.US_001;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.EnesPage;
 import utilities.ConfigReader;
@@ -31,9 +32,11 @@ Kayıtlı veya yönetici kullanıcı, username'sini sağ üst köşede görür v
         enesPage.userNameKutu.sendKeys(ConfigReader.getProperty("userGecerliMail"));
         enesPage.passwordKutu.sendKeys(ConfigReader.getProperty("userGecerliPassword"));
         enesPage.logInSignIn.click();
-        Driver.getDriver().findElement(By.xpath("//*[@class='fas fa-cog']")).isDisplayed();
-
-        Driver.quitDriver();
+       String expectedGorunenUsername="user.atakan.durman";
+       String actualGorunenUsername=enesPage.gorunenUserName.getText();
+        System.out.println(actualGorunenUsername);
+       Assert.assertEquals(actualGorunenUsername,expectedGorunenUsername);
+       Driver.quitDriver();
 
     }
 
