@@ -15,8 +15,9 @@ public class ArdaPage {
 
     // ***** HEADER LOCATORS ***** //
 
-    @FindBy(xpath = "//img[contains(@class,'logo_normal')]")
+    @FindBy(xpath = "//div[@id='logo']//img")
     public WebElement logo;
+
 
     @FindBy(xpath = "//a[@class='btn_add' and contains(text(),'Sign In')]")
     public WebElement signInButton;
@@ -49,5 +50,21 @@ public class ArdaPage {
 
     @FindBy(xpath = "//header[contains(@class,'header')]")
     public WebElement headerContainer;
+
+    @FindBy(xpath = "//a[contains(@href,'/admin')]")
+    public WebElement headerUserName;
+
+    @FindBy(xpath = "//input[@id='email']")
+    public WebElement emailBox;
+
+    @FindBy(xpath = "//input[@id='password']")
+    public WebElement passwordBox;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement loginSubmitButton;
+
+
+
+
 
 }
