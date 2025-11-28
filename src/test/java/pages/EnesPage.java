@@ -42,7 +42,7 @@ public class EnesPage {
     @FindBy (xpath = "//*[@class='form-control']")
     public WebElement  aramaKutusu;
 
-    @FindBy (xpath = "//*[@class='form-control']")
+    @FindBy (xpath = "//*[@type=\"submit\"]")
     public WebElement  searchButton;
 
     @FindBy (xpath = "//*[@id=\"page\"]/main/div/div[1]/a\n")
@@ -128,5 +128,8 @@ public class EnesPage {
 
     @FindBy (xpath = "(//*[@class='btn_add'])[1]")
     public WebElement signInButton;
+
+    @FindBy (xpath = "//*[@class='btn_add'][1]")
+    public WebElement gorunenUserName;
 
 }
