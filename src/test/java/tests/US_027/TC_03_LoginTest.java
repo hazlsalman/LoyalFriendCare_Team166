@@ -19,28 +19,24 @@ public class TC_03_LoginTest {
     public void test01() {
 
 
-        // --------------------------
-        // PRE-CONDITION 1: ANASAYFA
-        // --------------------------
+        // =========================================================
+        // PRE-CONDITION:
+        // =========================================================
+
+        //1-) Anasayfaya git.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
 
-        // --------------------------
-        // PRE-CONDITION 2: LOGIN SAYFASI
-        // --------------------------
-
-        wait.until(ExpectedConditions.elementToBeClickable(hakimPage.homePageSignInButton)).click();
-        wait.until(ExpectedConditions.visibilityOf(hakimPage.loginEmailBox));
-
-        String loginUrl = Driver.getDriver().getCurrentUrl();
+        //2-) Sıgn In butonuna bas.
+        hakimPage.homePageSignInButton.click();
 
 
         // =========================================================
         // POZİTİF ADIMLAR : KUTULARIN ETKİN OLDUĞUNU DOĞRULAMA
         // =========================================================
         Assert.assertTrue(hakimPage.loginEmailBox.isDisplayed(),
-                "EMAIL kutusu görünmüyor!");
+                "EMAIL kutusu görünmüyor.");
         Assert.assertTrue(hakimPage.loginPasswordBox.isDisplayed(),
-                "PASSWORD kutusu görünmüyor!");
+                "PASSWORD kutusu görünmüyor.");
 
 
 

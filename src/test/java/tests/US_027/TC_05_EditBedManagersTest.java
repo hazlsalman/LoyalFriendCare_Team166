@@ -22,42 +22,50 @@ public class TC_05_EditBedManagersTest {
 public void test01() throws InterruptedException {
 
 
-        // --------------------------
-        // PRE-CONDITION : LOGIN
-        // --------------------------
+        // =========================================================
+        // PRE-CONDITION:
+        // =========================================================
+
+        //1-) Anasayfaya git.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
 
-        // Login sayfasına geçiş
-        wait.until(ExpectedConditions.elementToBeClickable(hakimPage.homePageSignInButton)).click();
+        //2-) Sıgn In butonuna bas.
+        hakimPage.homePageSignInButton.click();
 
-        // Email ve password gir
+        //3-) Email ve password gir
         wait.until(ExpectedConditions.visibilityOf(hakimPage.loginEmailBox))
                 .sendKeys("admin.abdul.hakim.kazanci@loyalfriendcare.com");
-
         hakimPage.loginPasswordBox.sendKeys("LFCare.0201");
 
-
-        // Sign In butonuna tıkla ve login sonrası anasayfaya yönlendirilmesini bekle
+        //4-) Sign In butonuna tıkla.
         hakimPage.loginSignInButton.click();
-        wait.until(driver -> driver.getCurrentUrl().equals("https://qa.loyalfriendcare.com/en"));
+
 
         // --------------------------
         // ⚙ AYARLAR SİMGESİNE TIKLA
         // --------------------------
         wait.until(ExpectedConditions.elementToBeClickable(hakimPage.SettingsButton)).click();
 
+
         // --------------------------
-        // SOL MENÜYÜ AÇMAK İÇİN HOVER VE ÜST BED MANAGERS MENÜSÜNE TIKLA
+        // SOLDAN AÇILAN SİDEBAR MENÜYÜ, SOLLA HOVER İLE AÇ
         // --------------------------
         Actions actions = new Actions(Driver.getDriver());
         wait.until(ExpectedConditions.visibilityOf(hakimPage.bedManagersParent));
         actions.moveToElement(hakimPage.bedManagersParent).perform();
-        hakimPage.bedManagersParent.click();
+
 
         // --------------------------
-        // ALT BED MANAGERS MENÜSÜNE TIKLA
+        // BED MANAGERS MENÜSÜNE TIKLA
+        // --------------------------
+        wait.until(ExpectedConditions.elementToBeClickable(hakimPage.bedManagersParent)).click();
+
+
+        // --------------------------
+        // BED MANAGERS ALT MENÜSÜNE TIKLA
         // --------------------------
         wait.until(ExpectedConditions.elementToBeClickable(hakimPage.subBedManagers)).click();
+
 
         // --------------------------
         // EDIT BUTONUNA TIKLA
@@ -69,7 +77,7 @@ public void test01() throws InterruptedException {
         wait.until(ExpectedConditions.elementToBeClickable(firstEditButton)).click();
 
         // --------------------------
-        // Yatak bilgilerini güncelle
+        // YATAK BİLGİLERİNİ GÜNCELLE
         // --------------------------
         WebElement title = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Title_en")));
         title.clear();

@@ -19,22 +19,25 @@ public class TC_04_BedManagersMenuAndSearchTest {
     @Test
     public void test01() throws InterruptedException {
 
-        // --------------------------
-        // PRE-CONDITION : LOGIN
-        // --------------------------
+
+        // =========================================================
+        // PRE-CONDITION:
+        // =========================================================
+
+        //1-) Anasayfaya git.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
 
-        // 1-) Login sayfasına geçiş
-        wait.until(ExpectedConditions.elementToBeClickable(hakimPage.homePageSignInButton)).click();
+        //2-) Sıgn In butonuna bas.
+        hakimPage.homePageSignInButton.click();
 
-        // 2-) Email ve password gir
+        //3-) Email ve password gir
         wait.until(ExpectedConditions.visibilityOf(hakimPage.loginEmailBox))
                 .sendKeys("admin.abdul.hakim.kazanci@loyalfriendcare.com");
         hakimPage.loginPasswordBox.sendKeys("LFCare.0201");
 
-        // 3-) Sign In butonuna tıkla ve login sonrası anasayfaya yönlendirilmeyi bekle.
+        //4-) Sign In butonuna tıkla.
         hakimPage.loginSignInButton.click();
-        wait.until(driver -> driver.getCurrentUrl().equals("https://qa.loyalfriendcare.com/en"));
+
 
         // --------------------------
         //  ⚙ AYARLAR SİMGESİNE TIKLA
@@ -42,11 +45,9 @@ public class TC_04_BedManagersMenuAndSearchTest {
         wait.until(ExpectedConditions.elementToBeClickable(hakimPage.SettingsButton)).click();
 
         // --------------------------
-        // SOL MENÜYÜ AÇMAK İÇİN HOVER
+        // SOLDAN AÇILAN SİDEBAR MENÜYÜ, SOLLA HOVER İLE AÇ
         // --------------------------
         Actions actions = new Actions(Driver.getDriver());
-
-        // Sidebar menüyü sola hover ile aç
         wait.until(ExpectedConditions.visibilityOf(hakimPage.bedManagersParent));
         actions.moveToElement(hakimPage.bedManagersParent).perform();
 

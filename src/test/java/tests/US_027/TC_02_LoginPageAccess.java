@@ -16,21 +16,30 @@ public class TC_02_LoginPageAccess {
     public void test01() {
 
 
-        // 1- Anasayfaya git
+        // =========================================================
+        // PRE-CONDITION:
+        // =========================================================
+
+        //1-) Anasayfaya git.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
 
-        // 2- Anasayfadaki "Sign In" butonuna tıkla
+
+        // =========================================================
+        // SENARYO: LOGİN SAYFASINA ULAŞILIR.
+        // =========================================================
+
+        //1-) Anasayfadaki "Sign In" butonuna tıkla
         Assert.assertTrue(hakimPage.homePageSignInButton.isDisplayed(),
                 "\"Sign In\" butonu görünmüyor.");
         hakimPage.homePageSignInButton.click();
 
-        // 3- Login sayfasına gidildiğini doğrula (URL Kontrolü)
+        //2-) Login sayfasına gidildiğini doğrula (URL Kontrolü)
         String expectedUrl = "https://qa.loyalfriendcare.com/en/login";
         String actualUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertEquals(actualUrl, expectedUrl,
                 "Login sayfasına yönlendirme başarısız.");
 
-        // 4- Driver’ı kapat
+        //3-) Driver’ı kapat
         Driver.quitDriver();
     }
 }
