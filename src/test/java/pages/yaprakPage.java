@@ -44,7 +44,7 @@ public class yaprakPage {
     @FindBy(xpath = "(//div[@class='nice-select wide'])[1]")
     public WebElement appointmentDepartmentDD;
 
-    // Doktor dropdown
+    // dropdown
     @FindBy(xpath = "(//div[@class='nice-select wide'])[2]")
     public WebElement appointmentDoctorDD;
 
@@ -61,10 +61,43 @@ public class yaprakPage {
     public WebElement successMessage;
 
 
+    // US_042
 
+    // Admin ana sayfadaki “admin.yaprak.ersan” butonu
+    @FindBy(xpath = "//a[@class='btn_add']")
+    public WebElement adminPanelLinki;
 
+    // Admin panelde profil menü butonu (resimli)
+    @FindBy(xpath = "//button[@class='profile-dropdown-toggle']")
+    public WebElement profilMenuButonu;
 
+    // Açılır profil menüsü (dropdown)
+    @FindBy(xpath = "//*[@class='profile-dropdown-toggle']")
+    public WebElement profilDropdownMenu;
 
+    @FindBy(css = ".profile-dropdown-toggle img")
+    public WebElement profilResmi;
+
+    // Profil menü alt seçenekleri
+    @FindBy(xpath = "//*[@class='dropdown-item']")
+    public WebElement profilSettingsButton;
+
+    @FindBy(xpath = "//*[@class='pg-outdent']")
+    public WebElement profilEditProfileButton;
+
+    @FindBy(xpath = "//*[@class='pull-left']")
+    public WebElement profilLogoutButton;
+
+    // Admin panel yönlendirme URL sabiti
+    public static final String ADMIN_PANEL_URL = "https://qa.loyalfriendcare.com/en/admin";
+
+    @FindBy(id = "button")
+    public WebElement dontChangeImageCheckbox;
 
 
 }
+
+
+
+
+
