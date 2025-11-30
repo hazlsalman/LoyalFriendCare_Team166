@@ -2,72 +2,59 @@ package tests.US_007;
 
 import com.github.javafaker.Faker;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import pages.HakimPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
+import java.time.Duration;
+
 import static utilities.Driver.driver;
 
 public class TC_06_ConfirmPasswordTest {
 
+
+    HakimPage hakimPage = new HakimPage();
+    Faker faker = new Faker();
+
     @Test
-    public void test01() {
+    public void test01() throws InterruptedException {
 
-        HakimPage hakimPage = new HakimPage();
-        Faker faker = new Faker();
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        // =========================================================
+        // PRE-CONDITION:
+        // =========================================================
 
-
-        // --------------------------
-        // PRE-CONDITION: 1) ANASAYFAYA GİT
-        // --------------------------
+        //1-) Anasayfaya git.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
 
-        // --------------------------
-        // PRE-CONDITION: 2) SIGN UP SAYFASINA GEÇ
-        // --------------------------
-        hakimPage.homeSignUpButton.click();
+        //2-) Sıgn Up butonuna bas.
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(hakimPage.homePageSignUpButton)).click();
 
-        // --------------------------
-        // PRE-CONDITION: 3) USERNAME VE EMAIL ALANLARINI DOLDUR
-        // --------------------------
-        String username = faker.name().username();
-        String uniqMail = faker.internet().emailAddress();
+        //3-) Username alanını doldur.
+        Assert.assertTrue(hakimPage.usernameBox.isDisplayed(), "USERNAME kutusu görünmüyor.");
+        hakimPage.usernameBox.sendKeys(faker.name().username());
 
-        hakimPage.usernameBox.sendKeys(username);
-        hakimPage.emailBox.sendKeys(uniqMail);
+        //4-) Email alanını doldur.
+        Assert.assertTrue(hakimPage.emailBox.isDisplayed(), "EMAİL kutusu görünmüyor.");
+        hakimPage.emailBox.sendKeys(faker.internet().emailAddress());
 
-
-        // --------------------------
-        // PRE-CONDITION: 4) GEÇERLİ PASSWORD YAZ
-        // --------------------------
-        String validPassword = ConfigReader.getProperty("userGecerliPassword");
-
-
-        // Normal sendKeys bazen çalışmıyor; güvenli olması için JS ile value set edelim ve event tetikleyelim
-        js.executeScript("arguments[0].value = arguments[1];", hakimPage.passwordBox, validPassword);
-        js.executeScript("arguments[0].dispatchEvent(new Event('input'));", hakimPage.passwordBox);
-        js.executeScript("arguments[0].dispatchEvent(new Event('change'));", hakimPage.passwordBox);
+        //5-) Geçerli Password yaz.
+        hakimPage.passwordBox.sendKeys("A1?!!!99" + Keys.TAB);
 
 
 
         // =========================================================
-        // SENARYO 1: CONFIRM PASSWORD FARKLI YAZILIR → UYARI ALINIR
+        // SENARYO 1: CONFIRM PASSWORD'Ü, PASSWORD'DEN FARKLI YAZ.
         // =========================================================
 
-        hakimPage.confirmPasswordBox.clear();
+        hakimPage.confirmPasswordBox.sendKeys("a9?**2222" + Keys.TAB);
 
-        // confirm'a farklı bir değer yaz (JS ile)
-        String wrongPassword = "a9?**2222";
-        js.executeScript("arguments[0].value='" + wrongPassword + "';", hakimPage.confirmPasswordBox);
-        js.executeScript("arguments[0].dispatchEvent(new Event('input'));", hakimPage.confirmPasswordBox);
-        js.executeScript("arguments[0].dispatchEvent(new Event('change'));", hakimPage.confirmPasswordBox);
-
-
-        hakimPage.registersignUpButton.click();
+        hakimPage.registerPageSignUpButton.click();
 
         String uyarı1 = "";
         try {
@@ -77,35 +64,36 @@ public class TC_06_ConfirmPasswordTest {
             System.out.println("Senaryo 1: passwordNotMatchText görünmedi veya zaman aşımına uğradı.");
         }
 
-
         Assert.assertTrue(
-                uyarı1.toLowerCase().contains("match") || uyarı1.length() > 0,
-                "Farklı şifre yazıldığında 'eşleşmiyor' uyarısı çıkmadı!"
+                 uyarı1.length() > 0,
+                "Farklı şifre yazıldığında 'eşleşmiyor' uyarısı çıkmadı."
         );
 
+
+
         // =========================================================
-        // SENARYO 2: CONFIRM PASSWORD BOŞ BIRAKILIR → BROWSER UYARISI
+        // SENARYO 2: CONFIRM PASSWORD ALANINI BOŞ BIRAK.
         // =========================================================
 
         hakimPage.confirmPasswordBox.clear();
 
-        hakimPage.registersignUpButton.click();
+        hakimPage.registerPageSignUpButton.click();
 
 
-        // Browser required uyarısını al (validationMessage)
-        String uyari2 = (String) js.executeScript(
-                "return arguments[0].validationMessage;", hakimPage.confirmPasswordBox);
+        // Browser uyarısını al (validationMessage)
+        String uyarı2 = hakimPage.confirmPasswordBox.getAttribute("validationMessage");
 
-        System.out.println("Uyarı 2: " + uyari2);
+        System.out.println("Uyarı 2: " + uyarı2);
 
         Assert.assertTrue(
-                uyari2.toLowerCase().contains("fill") || uyari2.length() > 0,
-                "Boş bırakıldığında 'Please fill out this field' uyarısı çıkmadı!"
+                 uyarı2.length() > 0,
+                "Boş bırakıldığında 'Please fill out this field' uyarısı çıkmadı."
         );
 
 
+
         // =========================================================
-        // SENARYO 3: CONFIRM PASSWORD AYNI YAZILIR → KAYIT BAŞARILI
+        // SENARYO 3: CONFIRM PASSWORD'Ü,PASSWORD İLE AYNEN YAZ.
         // =========================================================
 
 
@@ -115,30 +103,14 @@ public class TC_06_ConfirmPasswordTest {
         hakimPage.passwordBox.clear();
         hakimPage.confirmPasswordBox.clear();
 
-        // Yeni verilerle doldur
-        String username3 = faker.name().username();
-        String uniqMail3 = faker.internet().emailAddress();
-
-        hakimPage.usernameBox.sendKeys(username3);
-        hakimPage.emailBox.sendKeys(uniqMail3);
-
-
-        // Password alanını doldur
-        js.executeScript("arguments[0].value = arguments[1];", hakimPage.passwordBox, validPassword);
-        js.executeScript("arguments[0].dispatchEvent(new Event('input'));", hakimPage.passwordBox);
-        js.executeScript("arguments[0].dispatchEvent(new Event('change'));", hakimPage.passwordBox);
-        System.out.println("Password alanı dolduruldu: " + validPassword);
-
-        // confirm'ı JS ile doldur (AYNI şifre)
-        js.executeScript("arguments[0].value = arguments[1];", hakimPage.confirmPasswordBox, validPassword);
-        js.executeScript("arguments[0].dispatchEvent(new Event('input'));", hakimPage.confirmPasswordBox);
-        js.executeScript("arguments[0].dispatchEvent(new Event('change'));", hakimPage.confirmPasswordBox);
-        System.out.println("Confirm Password alanı dolduruldu: " + validPassword);
+        // Yeni verilerle doldur.
+        hakimPage.usernameBox.sendKeys(faker.name().username());
+        hakimPage.emailBox.sendKeys(faker.internet().emailAddress());
+        hakimPage.passwordBox.sendKeys("a9?**2222" + Keys.TAB);
+        hakimPage.confirmPasswordBox.sendKeys("a9?**2222" + Keys.TAB);
 
         // Sign Up butonuna tıkla.
-        hakimPage.registersignUpButton.click();
-
-
+        hakimPage.registerPageSignUpButton.click();
 
         // Sayfada uyarı mesajı var mı kontrol et.
         System.out.println("\nSayfada uyarı mesajı kontrol ediliyor.");
@@ -149,16 +121,15 @@ public class TC_06_ConfirmPasswordTest {
         }
 
 
-
-        // Sayfa yönlendirmesini kontrol ediyoruz
+        // Sayfa yönlendirmesini kontrol et.
         String expectedUrl = "https://qa.loyalfriendcare.com/en"; // Anasayfa URL'si
         String actualUrl = driver.getCurrentUrl(); // Şu anki sayfanın URL'si
 
 
         Assert.assertEquals(actualUrl, expectedUrl,
-                "Şifreler aynı olmasına rağmen kayıt gerçekleşmedi veya URL yanlış!");
+                "Şifreler aynı olmasına rağmen kayıt gerçekleşmedi veya URL yanlış.");
 
 
-        Driver.quitDriver(); // Testin sonunda driver'ı kapatıyoruz
+        Driver.quitDriver();
     }
 }

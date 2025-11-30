@@ -1,120 +1,124 @@
 package tests.US_007;
 
 import com.github.javafaker.Faker;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HakimPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
+import java.time.Duration;
+
 public class TC_05_ValidPasswordTest {
+
+    HakimPage hakimPage = new HakimPage();
+    Faker faker = new Faker();
 
     @Test
     public void test01() throws InterruptedException {
 
-        HakimPage hakimPage = new HakimPage();
-        Faker faker = new Faker();
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
-        // --------------------------
-        // PRE-CONDITION: 1) ANASAYFAYA GİT.
-        // --------------------------
+        // =========================================================
+        // PRE-CONDITION:
+        // =========================================================
+
+        //1-) Anasayfaya git.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
 
-        // --------------------------
-        // PRE-CONDITION: 2) SIGN UP SAYFASINA GEÇİŞ
-        // --------------------------
-        hakimPage.homeSignUpButton.click();
+        //2-) Sıgn Up butonuna bas.
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(hakimPage.homePageSignUpButton)).click();
 
-        // ----------------------------------------
-        // PRE-CONDITION: 3) USERNAME & EMAIL (Ön Şart)
-        // ----------------------------------------
-        String fakeUsername = faker.name().fullName();
-        hakimPage.usernameBox.sendKeys(fakeUsername);
-        hakimPage.emailBox.sendKeys(ConfigReader.getProperty("userGecerliMail"));
+        //3-) Username alanını doldur.
+        Assert.assertTrue(hakimPage.usernameBox.isDisplayed(), "USERNAME kutusu görünmüyor.");
+        hakimPage.usernameBox.sendKeys(faker.name().username());
+
+        //4-) Email alanını doldur.
+        Assert.assertTrue(hakimPage.emailBox.isDisplayed(), "EMAİL kutusu görünmüyor.");
+        hakimPage.emailBox.sendKeys(faker.internet().emailAddress());
 
 
-        // ------------------------------------------------
-
-        // 1.STEP: SADECE RAKAMLARDAN OLUŞAN ŞİFRE
+        // =========================================================
+        // 1. STEP: SADECE RAKAMLARDAN OLUŞAN ŞİFRE GİR.
+        // =========================================================
         hakimPage.passwordBox.clear();
         hakimPage.confirmPasswordBox.clear();
 
         hakimPage.passwordBox.sendKeys("12345678" + Keys.TAB);
         hakimPage.confirmPasswordBox.sendKeys("12345678");
 
-        String msg1 = (String) js.executeScript("return arguments[0].validationMessage;", hakimPage.passwordBox);
-        Assert.assertTrue(msg1.length() > 0,
-                "1) Sadece rakamlardan oluşan şifre için beklenen native uyarı çıkmadı! (msg: " + msg1 + ")");
+        String uyarı1 = hakimPage.passwordBox.getAttribute("validationMessage");
+        Assert.assertTrue(uyarı1.length() > 0,
+                "1) Sadece rakamlardan oluşan şifre için beklenen uyarı çıkmadı.");
 
-
-        // 2. STEP: SADECE HARFLERDEN OLUŞAN ŞİFRE
+        // =========================================================
+        // 2. STEP: SADECE HARFLERDEN OLUŞAN ŞİFRE GİR.
+        // =========================================================
         hakimPage.passwordBox.clear();
         hakimPage.confirmPasswordBox.clear();
 
         hakimPage.passwordBox.sendKeys("abcdefgh" + Keys.TAB);
         hakimPage.confirmPasswordBox.sendKeys("abcdefgh");
 
-        String msg2 = (String) js.executeScript("return arguments[0].validationMessage;", hakimPage.passwordBox);
-        Assert.assertTrue(msg2.length() > 0,
-                "2) Sadece harf içeren şifre için beklenen native uyarı çıkmadı! (msg: " + msg2 + ")");
+        String uyarı2 = hakimPage.passwordBox.getAttribute("validationMessage");
+        Assert.assertTrue(uyarı2.length() > 0,
+                "2) Sadece harf içeren şifre için beklenen uyarı çıkmadı.");
 
-
-        // 3.STEP: SADECE ÖZEL KARAKTERLERDEN OLUŞAN ŞİFRE
+        // =========================================================
+        // 3. STEP: SADECE ÖZEL KARAKTERLERDEN OLUŞAN ŞİFRE GİR.
+        // =========================================================
         hakimPage.passwordBox.clear();
         hakimPage.confirmPasswordBox.clear();
 
         hakimPage.passwordBox.sendKeys("!@#$%^&*" + Keys.TAB);
         hakimPage.confirmPasswordBox.sendKeys("!@#$%^&*");
 
-        String msg3 = (String) js.executeScript("return arguments[0].validationMessage;", hakimPage.passwordBox);
-        Assert.assertTrue(msg3.length() > 0,
-                "3) Sadece özel karakterlerden oluşan şifre için beklenen native uyarı çıkmadı! (msg: " + msg3 + ")");
+        String uyarı3 = hakimPage.passwordBox.getAttribute("validationMessage");
+        Assert.assertTrue(uyarı3.length() > 0,
+                "3) Sadece özel karakterlerden oluşan şifre için beklenen uyarı çıkmadı.");
 
-
-        // 4.STEP: Kriterleri içeriyor ama 8 karakterden kısa
+        // =========================================================
+        // 4. STEP: KRİTERLERE UYGUN AMA 8 KARAKTERDEN KISA ŞİFRE GİR.
+        // =========================================================
         hakimPage.passwordBox.clear();
         hakimPage.confirmPasswordBox.clear();
 
-        hakimPage.passwordBox.sendKeys("A1?!!" + Keys.TAB); // 5 karakter örnek
+        hakimPage.passwordBox.sendKeys("A1?!!" + Keys.TAB);
         hakimPage.confirmPasswordBox.sendKeys("A1?!!");
 
-        String msg4 = (String) js.executeScript("return arguments[0].validationMessage;", hakimPage.passwordBox);
-        Assert.assertTrue(msg4.length() > 0,
-                "4) 8 karakterden kısa şifre için beklenen native uyarı çıkmadı! (msg: " + msg4 + ")");
+        String uyarı4 = hakimPage.passwordBox.getAttribute("validationMessage");
+        Assert.assertTrue(uyarı4.length() > 0,
+                "4) 8 karakterden kısa şifre için beklenen uyarı çıkmadı.");
 
-
-        // 5. STEP: ŞİFRE KUTUSU BOŞ BIRAKILDIĞINDA
+        // =========================================================
+        // 5. STEP: ŞİFRE KUTUSUNU BOŞ BIRAK.
+        // =========================================================
         hakimPage.passwordBox.clear();
         hakimPage.confirmPasswordBox.clear();
 
-        hakimPage.registersignUpButton.click(); // submit etmeye çalış
+        hakimPage.registerPageSignUpButton.click();
 
-        String msg5 = (String) js.executeScript("return arguments[0].validationMessage;", hakimPage.passwordBox);
-        // hem Türkçe hem İngilizce kontrolü için genişçe bakıyoruz
-        Assert.assertTrue(
-                msg5.toLowerCase().contains("fill") ||
-                        msg5.toLowerCase().contains("doldurun") ||
-                        msg5.length() > 0,
-                "5) Şifre alanı boş bırakıldığında beklenen 'fill out' uyarısı çıkmadı! (msg: " + msg5 + ")"
-        );
+        String uyarı5 = hakimPage.passwordBox.getAttribute("validationMessage");
+        Assert.assertTrue(uyarı5.length() > 0,
+                "5) Şifre alanı boş bırakıldığında beklenen uyarı çıkmadı.");
 
-
-        // 6.STEP: GEÇERLİ ŞİFRE (UYARI OLMAMALI)
+        // =========================================================
+        // 6. STEP: GEÇERLİ ŞİFRE GİR. (UYARI OLMAMALI)
+        // =========================================================
         hakimPage.passwordBox.clear();
         hakimPage.confirmPasswordBox.clear();
 
-        String validPwd = ConfigReader.getProperty("userGecerliPassword"); // örn: LFCare.0201
-        hakimPage.passwordBox.sendKeys(validPwd + Keys.TAB);
-        hakimPage.confirmPasswordBox.sendKeys(validPwd);
+        String validPassword = ConfigReader.getProperty("userGecerliPassword");
+        hakimPage.passwordBox.sendKeys(validPassword + Keys.TAB);
+        hakimPage.confirmPasswordBox.sendKeys(validPassword);
 
-        String msg6 = (String) js.executeScript("return arguments[0].validationMessage;", hakimPage.passwordBox);
-        Assert.assertEquals(msg6, "",
-                "6) Geçerli şifre girilmesine rağmen native uyarı döndü! (msg: " + msg6 + ")");
+        String uyarı6 = hakimPage.passwordBox.getAttribute("validationMessage");
+        Assert.assertEquals(uyarı6, "",
+                "6) Geçerli şifre girilmesine rağmen uyarı verdi.");
 
         Driver.quitDriver();
     }
 }
-

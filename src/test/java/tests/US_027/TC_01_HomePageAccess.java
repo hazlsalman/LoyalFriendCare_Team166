@@ -1,4 +1,4 @@
-package tests.US_007;
+package tests.US_027;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -7,20 +7,21 @@ import utilities.Driver;
 
 public class TC_01_HomePageAccess {
 
-
         @Test
-        public void test01(){
+        public void test01() {
 
             // 1- URL'e git.
             Driver.getDriver().get(ConfigReader.getProperty("url"));
 
-            // 2- Anasayfanın açıldığını doğrula.
+            // 2- Anasayfa açıldığını doğrula.
             Assert.assertTrue(
                     Driver.getDriver().getCurrentUrl().contains("loyalfriendcare"),
-                    "Anasayfa görüntülenemedi.");
+                    "Anasayfa görüntülenemedi."
+            );
 
             // 3- Driver'ı kapat.
             Driver.quitDriver();
         }
     }
+
 

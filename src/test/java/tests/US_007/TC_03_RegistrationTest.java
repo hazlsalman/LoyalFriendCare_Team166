@@ -1,40 +1,42 @@
 package tests.US_007;
 
 import com.github.javafaker.Faker;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HakimPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
+import java.time.Duration;
+
 public class TC_03_RegistrationTest {
+
+    HakimPage hakimPage = new HakimPage();
+    Faker faker = new Faker();
 
     @Test
     public void test01() throws InterruptedException {
 
-        HakimPage hakimPage = new HakimPage();
-        Faker faker = new Faker();
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
 
-        // --------------------------
-        // PRE-CONDITION: 1) ANASAYFAYA GİT
-        // --------------------------
+        // =========================================================
+        // PRE-CONDITION:
+        // =========================================================
+
+        //1) Anasayfaya git.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
 
-        // --------------------------
-        // PRE-CONDITION: 2) SIGN UP SAYFASINA GEÇ
-        // --------------------------
-        hakimPage.homeSignUpButton.click();
-
+        //2) Sıgn Up butonuna bas.
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(hakimPage.homePageSignUpButton)).click();
 
 
         // =========================================================
-        // 1) POZİTİF ADIMLAR : SADECE KUTULARIN ETKİN OLDUĞUNU DOĞRULAMA
-        // (Test case'te bu adımlar var)
+        // KUTULARIN ETKİN OLDUĞUNU DOĞRULAMA
         // =========================================================
 
-        // ADIM 1 : USERNAME kutucuğuna isim girilir
+        // ADIM 1 : USERNAME girilir
         Assert.assertTrue(hakimPage.usernameBox.isDisplayed(), "USERNAME kutusu görünmüyor!");
         hakimPage.usernameBox.sendKeys("Abdül Hakim Kazancı");
 
@@ -47,9 +49,6 @@ public class TC_03_RegistrationTest {
 
         // ADIM 4 : CONFIRM PASSWORD girilir
         hakimPage.confirmPasswordBox.sendKeys("LFCare.0201");
-
-        Thread.sleep(1500);
-
 
         // =========================================================
         // NEGATİF SENARYOLAR (CASE’TEKİ SIRA İLE)
@@ -65,13 +64,11 @@ public class TC_03_RegistrationTest {
         hakimPage.passwordBox.sendKeys("LFCare.0201");
         hakimPage.confirmPasswordBox.sendKeys("LFCare.0201");
 
-        hakimPage.registersignUpButton.click();
+        hakimPage.registerPageSignUpButton.click();
 
-        String usernameMessage = (String) js.executeScript(
-                "return arguments[0].validationMessage;", hakimPage.usernameBox);
+        String usernameMessage = hakimPage.usernameBox.getAttribute("validationMessage");
         Assert.assertTrue(usernameMessage.length() > 0,
                 "USERNAME boş bırakıldığında uyarı çıkmadı!");
-
 
         // ---------------- SENARYO 2: EMAIL ALANINI BOŞ BIRAK  ----------------
         hakimPage.usernameBox.clear();
@@ -83,13 +80,11 @@ public class TC_03_RegistrationTest {
         hakimPage.passwordBox.sendKeys("LFCare.0201");
         hakimPage.confirmPasswordBox.sendKeys("LFCare.0201");
 
-        hakimPage.registersignUpButton.click();
+        hakimPage.registerPageSignUpButton.click();
 
-        String emailMessage = (String) js.executeScript(
-                "return arguments[0].validationMessage;", hakimPage.emailBox);
+        String emailMessage = hakimPage.emailBox.getAttribute("validationMessage");
         Assert.assertTrue(emailMessage.length() > 0,
                 "EMAIL boş bırakıldığında uyarı çıkmadı!");
-
 
         // ---------------- SENARYO 3: PASSWORD ALANINI BOŞ BIRAK ----------------
         hakimPage.usernameBox.clear();
@@ -101,13 +96,11 @@ public class TC_03_RegistrationTest {
         hakimPage.emailBox.sendKeys("user.abdul.hakim.kazanci@loyalfriendcare.com");
         hakimPage.confirmPasswordBox.sendKeys("LFCare.0201");
 
-        hakimPage.registersignUpButton.click();
+        hakimPage.registerPageSignUpButton.click();
 
-        String passwordMessage = (String) js.executeScript(
-                "return arguments[0].validationMessage;", hakimPage.passwordBox);
+        String passwordMessage = hakimPage.passwordBox.getAttribute("validationMessage");
         Assert.assertTrue(passwordMessage.length() > 0,
                 "PASSWORD boş bırakıldığında uyarı çıkmadı!");
-
 
         // ------------- SENARYO 4: CONFIRM PASSWORD ALANINI BOŞ BIRAK -------------
         hakimPage.usernameBox.clear();
@@ -119,13 +112,11 @@ public class TC_03_RegistrationTest {
         hakimPage.emailBox.sendKeys("user.abdul.hakim.kazanci@loyalfriendcare.com");
         hakimPage.passwordBox.sendKeys("LFCare.0201");
 
-        hakimPage.registersignUpButton.click();
+        hakimPage.registerPageSignUpButton.click();
 
-        String confirmMessage = (String) js.executeScript(
-                "return arguments[0].validationMessage;", hakimPage.confirmPasswordBox);
+        String confirmMessage = hakimPage.confirmPasswordBox.getAttribute("validationMessage");
         Assert.assertTrue(confirmMessage.length() > 0,
                 "CONFIRM PASSWORD boş bırakıldığında uyarı çıkmadı!");
-
 
         // =========================================================
         // POZİTİF SENARYO : BAŞARILI KAYIT (FAKER CLASS'lı)
@@ -144,15 +135,13 @@ public class TC_03_RegistrationTest {
         hakimPage.passwordBox.sendKeys("LFCare.0201");
         hakimPage.confirmPasswordBox.sendKeys("LFCare.0201");
 
-        hakimPage.registersignUpButton.click();
-        Thread.sleep(2000);
+        hakimPage.registerPageSignUpButton.click();
 
         Assert.assertEquals(
                 Driver.getDriver().getCurrentUrl(),
                 "https://qa.loyalfriendcare.com/en",
-                "Kayıt sonrası anasayfa açılmadı!"
+                "Kayıt sonrası anasayfa açılmadı."
         );
-
 
         Driver.quitDriver();
     }
