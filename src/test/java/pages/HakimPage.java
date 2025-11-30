@@ -80,10 +80,6 @@ public class HakimPage {
     @FindBy(id = "search-table")
     public WebElement SearchBox;
 
-    // LISTEDEKI EDIT BUTONLARI
-    @FindBy(css = "a.btn-complete.btn-animated span")
-    public List<WebElement> editButtons;
-
     // BED MANAGERS EDIT SAYFASI - TITLE
     @FindBy(id = "Title_en")
     public WebElement bedManagerTitle;

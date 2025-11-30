@@ -94,7 +94,8 @@ public class TC_03_LoginTest {
         Driver.quitDriver();
         Driver.getDriver().get(ConfigReader.getProperty("url"));
 
-        hakimPage = new HakimPage();
+        wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10)); // WebDriverWait nesnesi, her yeni driver açıldığında yeniden oluşturulur.
+        hakimPage = new HakimPage(); // Her yeni driver açıldığında page object’leri de yeniden oluşturulmalıdır.
 
         wait.until(ExpectedConditions.elementToBeClickable(hakimPage.homePageSignInButton)).click();
         wait.until(ExpectedConditions.visibilityOf(hakimPage.loginEmailBox));
@@ -118,7 +119,8 @@ public class TC_03_LoginTest {
         Driver.quitDriver();
         Driver.getDriver().get(ConfigReader.getProperty("url"));
 
-        hakimPage = new HakimPage();
+        wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10)); // WebDriverWait nesnesi, her yeni driver açıldığında yeniden oluşturulur.
+        hakimPage = new HakimPage(); // Her yeni driver açıldığında page object’leri de yeniden oluşturulmalıdır.
 
         wait.until(ExpectedConditions.elementToBeClickable(hakimPage.homePageSignInButton)).click();
         wait.until(ExpectedConditions.visibilityOf(hakimPage.loginEmailBox));
@@ -134,7 +136,6 @@ public class TC_03_LoginTest {
         // =========================================================
         //  ANASAYFAYA YÖNLENDİRMEYİ TEST ET.
         // =========================================================
-        hakimPage = new HakimPage();
 
         String currentUrl = Driver.getDriver().getCurrentUrl();
         System.out.println("Başarılı giriş sonrası URL: " + currentUrl);

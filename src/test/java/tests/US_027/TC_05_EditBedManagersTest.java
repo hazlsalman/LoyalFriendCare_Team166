@@ -79,15 +79,18 @@ public void test01() throws InterruptedException {
         // --------------------------
         // YATAK BİLGİLERİNİ GÜNCELLE
         // --------------------------
-        WebElement title = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Title_en")));
-        title.clear();
-        title.sendKeys("Mırr Haven");
 
-        WebElement content = Driver.getDriver().findElement(By.xpath("//div[@class='note-editable']"));
-        content.clear();
-        content.sendKeys("Clean, safe, and well-managed beds for hospitalized pets.");
+        //1-)Title değiştir.
+        wait.until(ExpectedConditions.elementToBeClickable(hakimPage.bedManagerTitle)).click();
+        hakimPage.bedManagerTitle.clear();
+        hakimPage.bedManagerTitle.sendKeys("Mırr Haven");
 
-        // Dropdownlar: Departments, Created Doctor, Medicines (sadece seçim)
+        //2-)Contenti değiştir.
+        wait.until(ExpectedConditions.elementToBeClickable(hakimPage.bedManagerContent)).click();
+        hakimPage.bedManagerContent.clear();
+        hakimPage.bedManagerContent.sendKeys("Clean, safe, and well-managed beds for hospitalized pets.");
+
+        //3-) Dropdownlar: Departments, Created Doctor, Medicines (sadece seçim)
         WebElement departmentDropdown = Driver.getDriver().findElement(By.xpath("//span[@class='select2-selection__rendered']"));
         actions.moveToElement(departmentDropdown).click().perform();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[text()='Wellness']"))).click();
@@ -100,10 +103,9 @@ public void test01() throws InterruptedException {
         actions.moveToElement(medicinesDropdown).click().perform();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[contains(text(),'Baytril')]"))).click();
 
-        // BED PRİCE ALANINA MİKTAR GİR.
-        WebElement bedPrice = Driver.getDriver().findElement(By.name("Downloud"));
-        bedPrice.clear();
-        bedPrice.sendKeys("333");
+        //4-) BED PRİCE alanına miktar gir.
+        hakimPage.bedPrice.clear();
+        hakimPage.bedPrice.sendKeys("333");
 
         // --------------------------
         // SAVE BUTONUNA TIKLA
@@ -114,11 +116,11 @@ public void test01() throws InterruptedException {
         // --------------------------
         // DASHBOARD SAYFASINA DÖNÜŞ VE SUCCESS MESAJI
         // --------------------------
-        WebElement successMsg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[text()='Tracks Updated successfully.']")));
-        Assert.assertTrue(successMsg.isDisplayed(), "Success mesajı görünmüyor!");
+        wait.until(ExpectedConditions.visibilityOf(hakimPage.successMessage));
+        Assert.assertTrue(hakimPage.successMessage.isDisplayed(), "Success mesajı görünmüyor!");
 
         // Dashboard URL kontrol
-        wait.until(driver -> driver.getCurrentUrl().equals("https://qa.loyalfriendcare.com/en/Dashboard/Posts"));
+        wait.until(ExpectedConditions.urlToBe("https://qa.loyalfriendcare.com/en/Dashboard/Posts"));
 
         Driver.quitDriver();
     }
