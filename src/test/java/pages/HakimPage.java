@@ -118,8 +118,14 @@ public class HakimPage {
     @FindBy(css = "button.btn.btn-success.btn-cons.btn-animated.from-left.fa.fa-save.pull-right")
     public WebElement bedManagersSaveButton;
 
-    // DASHBOARD SAYFASI - SUCCESS MESSAGE
+    // DASHBOARD SAYFASI - BAŞARILI KAYIT MESAJI
     @FindBy(xpath = "//span[text()='Tracks Updated successfully.']")
     public WebElement successMessage;
+
+    // DASHBOARD SAYFASI - BAŞARILI SİLME MESAJI
+    @FindBy(xpath = "//div[@class='alert alert-danger']/span[text()='Tracks deleted successfully']")
+    public WebElement deleteSuccessMessage;
+
+
 
 }

@@ -67,13 +67,10 @@ public class TC_13_BedManagersDeleteTest {
                 By.cssSelector("button.btn.btn-danger.btn-cons.btn-animated")));
         deleteButton.click();
 
-        // Silme sonrası mesajı bekle ve doğrula
-        By deleteSuccessLocator = By.cssSelector("div.alert.alert-danger > span");
-        WebElement successMessage = wait.until(ExpectedConditions.visibilityOfElementLocated(deleteSuccessLocator));
+        // Silme sonrası mesajın görünürlüğünü kontrol et
+        WebElement successMessage = wait.until(ExpectedConditions.visibilityOf(hakimPage.deleteSuccessMessage));
+        Assert.assertTrue(successMessage.isDisplayed(), "Silme mesajı görünür değil.");
 
-        String expectedMessage = "Tracks deleted successfully";
-        Assert.assertEquals(successMessage.getText().trim(), expectedMessage, "Silme mesajı beklenenden farklı!");
-        System.out.println("Silme başarılı: " + successMessage.getText());
 
         Driver.quitDriver();
 
