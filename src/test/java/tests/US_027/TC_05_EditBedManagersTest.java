@@ -48,7 +48,7 @@ public void test01() throws InterruptedException {
 
 
         // --------------------------
-        // SOLDAN AÇILAN SİDEBAR MENÜYÜ, SOLLA HOVER İLE AÇ
+        // SOLDAN AÇILAN SİDEBAR MENÜYÜ, SOLA HOVER İLE AÇ
         // --------------------------
         Actions actions = new Actions(Driver.getDriver());
         wait.until(ExpectedConditions.visibilityOf(hakimPage.bedManagersParent));

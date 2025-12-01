@@ -80,6 +80,7 @@ public class HakimPage {
     @FindBy(id = "search-table")
     public WebElement SearchBox;
 
+
     // BED MANAGERS EDIT SAYFASI - TITLE
     @FindBy(id = "Title_en")
     public WebElement bedManagerTitle;
