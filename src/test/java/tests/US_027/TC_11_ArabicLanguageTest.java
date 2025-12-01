@@ -126,5 +126,12 @@ public class TC_11_ArabicLanguageTest extends TestBaseRapor {
         extentTest.pass("3-) Arabic Title & Content alanlarına metin girildi (Arapça karakterlerle girilemedi). " +
                         "Save butonuna basıldıktan sonra başarı mesajının ekran görüntüsü alındı.")
                 .addScreenCaptureFromPath(resim3);
+
+
+        // =========================================================
+        // TEST ÖZETİ
+        // =========================================================
+        extentTest.info("");
+        extentTest.info("TOPLAM 3 FOTOĞRAF ÇEKİLDİ.");
     }
 }

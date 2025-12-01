@@ -202,6 +202,6 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
         extentTest.info("TOPLAM 8 FOTOĞRAF ÇEKİLDİ");
         extentTest.info("1. Yatak: 4 fotoğraf");
         extentTest.info("2. Yatak: 4 fotoğraf");
-        extentTest.info("Tüm toggle testleri tamamlandı!");
+
     }
 }

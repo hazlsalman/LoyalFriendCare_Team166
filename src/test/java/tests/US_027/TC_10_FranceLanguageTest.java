@@ -138,5 +138,11 @@ public class TC_10_FranceLanguageTest extends TestBaseRapor {
                         "Butona basıldıktan sonra dönülen sayfada, sağ üstteki çıkan 'başarılı kayıt' mesajının ekran görüntüsü alındı.")
                 .addScreenCaptureFromPath(resim3);
 
+        // =========================================================
+        // TEST ÖZETİ
+        // =========================================================
+        extentTest.info("");
+        extentTest.info("TOPLAM 3 FOTOĞRAF ÇEKİLDİ.");
+
     }
 }
