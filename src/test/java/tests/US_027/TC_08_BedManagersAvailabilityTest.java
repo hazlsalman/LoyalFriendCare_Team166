@@ -76,7 +76,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
         // FOTOĞRAF 1: Dashboard'da 1. yatağın durumu (Edit Butonuna Tıklamadan Öncesi)
         // Önce Dashboard sayfasında fotoğraf çek.
         String resim1 = ReusableMethods.raporaResimEkle("1-)Dashboard_FirstBed_BeforeEdit");
-        extentTest.info("FOTOĞRAF 1/8: Dashboard Sayfası - 1.Yatak: AVAILIBLITY DURUM (Edit öncesi 'on' ifadesi yazıyor.)")
+        extentTest.info("FOTOĞRAF 1/8: Dashboard Sayfası - 1.Yatak: AVAILIBLITY DURUM (Edit Öncesi)")
                 .addScreenCaptureFromPath(resim1);
 
 
@@ -97,7 +97,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
 
         // Toggle'ın mevcut halinin fotoğrafını çek.
         String resim2 = ReusableMethods.raporaResimEkle("2-)EditPage_FirstBed_Toggle_Before");
-        extentTest.info("FOTOĞRAF 2/8: Edit Sayfası - 1.Yatak: Toggle Butonu Mevcut Hali")
+        extentTest.info("FOTOĞRAF 2/8: Edit Sayfası - 1.Yatak: Toggle Butonun Mevcut Durumu")
                 .info("Toggle Durumu: " + (isFirstOn ? "AÇIK (Yeşil) DURUMDA" : "KAPALI (Gri) DURUMDA"))
                 .addScreenCaptureFromPath(resim2);
 
@@ -110,7 +110,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
 
         // Bu değişikliğin fotoğrafını çek.
         String resim3 = ReusableMethods.raporaResimEkle("3-)EditPage_FirstBed_Toggle_After");
-        extentTest.info("FOTOĞRAF 3/8: Edit Sayfası - 1.Yatak: Toggle Değiştirildi")
+        extentTest.info("FOTOĞRAF 3/8: Edit Sayfası - 1.Yatak: Toggle Butonun Durumu Değiştirildi")
                 .info("Toggle Durumu: " + (isFirstOn ? "KAPALI yapıldı" : "AÇIK yapıldı"))
                 .addScreenCaptureFromPath(resim3);
 
@@ -122,7 +122,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
 
         // Dashboard sayfasının fotoğrafını çek.
         String resim4 = ReusableMethods.raporaResimEkle("4-)Dashboard_FirstBed_AfterEdit");
-        extentTest.info("FOTOĞRAF 4/8: Dashboard Sayfası - 1.Yatak: AVAILIBLITY DURUM (Değişiklik yapılmasına rağmen , edit sonrası yine 'on' ifadesi yazıyor.)")
+        extentTest.info("FOTOĞRAF 4/8: Dashboard Sayfası - 1.Yatak: AVAILIBLITY DURUM (Edit Sonrası)")
                 .info("Toggle değişikliği kaydedildi")
                 .addScreenCaptureFromPath(resim4);
 
@@ -144,7 +144,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
         // FOTOĞRAF 5: Dashboard'da 2. yatağın durumu (Edit Butonuna Tıklamadan Öncesi)
         // Önce Dashboard sayfasında fotoğraf çek.
         String resim5 = ReusableMethods.raporaResimEkle("5-)Dashboard_SecondBed_BeforeEdit");
-        extentTest.info("FOTOĞRAF 5/8: Dashboard Sayfası - 2.Yatak: AVAILIBLITY DURUM (Edit öncesi hiçbir şey yazmıyor.)")
+        extentTest.info("FOTOĞRAF 5/8: Dashboard Sayfası - 2.Yatak: AVAILIBLITY DURUM (Edit Öncesi)")
                 .addScreenCaptureFromPath(resim5);
 
         // FOTOĞRAF 6: İkinci yatağa ait Edit butonuna bas ve edit sayfasında, önce Availiblity toggle butonununu mevcut halinin fotoğrafını çek.
@@ -160,7 +160,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
 
         // Toggle'ın mevcut halinin fotoğrafını çek.
         String resim6 = ReusableMethods.raporaResimEkle("6-)EditPage_SecondBed_Toggle_Before");
-        extentTest.info("FOTOĞRAF 6/8: Edit Sayfası - 2.Yatak: Toggle Mevcut Hali")
+        extentTest.info("FOTOĞRAF 6/8: Edit Sayfası - 2.Yatak: Toggle Butonun Mevcut Durumu")
                 .info("Toggle Durumu: " + (isSecondOn ? "AÇIK (Yeşil) DURUMDA" : "KAPALI (Gri) DURUMDA"))
                 .addScreenCaptureFromPath(resim6);
 
@@ -172,7 +172,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
 
         // Bu değişikliğin fotoğrafını çek.
         String resim7 = ReusableMethods.raporaResimEkle("7-)EditPage_SecondBed_Toggle_After");
-        extentTest.info("FOTOĞRAF 7/8: Edit Sayfası - 2.Yatak: Toggle Değiştirildi")
+        extentTest.info("FOTOĞRAF 7/8: Edit Sayfası - 2.Yatak: Toggle Butonun Durumu Değiştirildi")
                 .info("Toggle Durumu: " + (isSecondOn ? "KAPALI yapıldı" : "AÇIK yapıldı"))
                 .addScreenCaptureFromPath(resim7);
 
@@ -185,7 +185,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
 
         // Dashboard sayfasının fotoğrafını çek.
         String resim8 = ReusableMethods.raporaResimEkle("8-)Dashboard_SecondBed_AfterEdit");
-        extentTest.info("FOTOĞRAF 8/8: Dashboard Sayfası: - 2.Yatak: AVAILIBLITY DURUM (Değişiklik yapılmaına rağmen, edit sonrası yine hiçbir şey yazmıyor.)")
+        extentTest.info("FOTOĞRAF 8/8: Dashboard Sayfası: - 2.Yatak: AVAILIBLITY DURUM (Edit Sonrası)")
                 .info("Toggle değişikliği kaydedildi")
                 .addScreenCaptureFromPath(resim8);
 
