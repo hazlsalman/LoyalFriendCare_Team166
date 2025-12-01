@@ -83,7 +83,7 @@ public class TC_11_ArabicLanguageTest extends TestBaseRapor {
         By collapseArabicLocator = By.cssSelector("a[data-toggle='collapse'][href='#collapseThree']");
         WebElement arabicCollapse = wait.until(ExpectedConditions.elementToBeClickable(collapseArabicLocator));
         arabicCollapse.click();
-        ReusableMethods.bekle(3);
+        ReusableMethods.bekle(1);
 
         String resim1 = ReusableMethods.raporaResimEkle("A-)ArabicLanguage_Panel_Opened");
         extentTest.info("1-) Arabic Language panel açıldı ve panelin boş halinin ekran görüntüsü alındı.")
@@ -103,7 +103,7 @@ public class TC_11_ArabicLanguageTest extends TestBaseRapor {
         // Deneme amaçlı metin gir (Arapça giremiyoruz, Latin karakterle test ediyoruz)
         titleInput.sendKeys("Test Arabic Title");
         contentInput.sendKeys("Test Arabic Content");
-        ReusableMethods.bekle(3);
+        ReusableMethods.bekle(1);
 
         String resim2 = ReusableMethods.raporaResimEkle("B-)ArabicLanguage_Title_Content_Filled");
         extentTest.info("2-) Arabic Title ve Content alanları dolduruldu ancak Arapça karakter girilemedi ve ekran görüntüsü alındı.")
@@ -114,7 +114,7 @@ public class TC_11_ArabicLanguageTest extends TestBaseRapor {
         contentInput.clear();
 
         // 4-) Save ve success message
-        ReusableMethods.bekle(3);
+        ReusableMethods.bekle(1);
         actions.moveToElement(hakimPage.bedManagersSaveButton).click().perform();
 
         wait.until(ExpectedConditions.urlContains("/Dashboard/Posts"));

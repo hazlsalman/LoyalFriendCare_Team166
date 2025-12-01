@@ -87,13 +87,13 @@ public class TC_10_FranceLanguageTest extends TestBaseRapor {
         WebElement franceLanguageCollapse = wait.until(ExpectedConditions.elementToBeClickable(collapseALocator));
         franceLanguageCollapse.click();
 
-        ReusableMethods.bekle(3);
+        ReusableMethods.bekle(2);
 
         // Ekran görüntüsü al.
         String resim1 = ReusableMethods.raporaResimEkle("I-)FranceLanguage_Panel_Opened");
         extentTest.info("1-)France Language panel açıldı ve panelin boş halinin ekran görüntüsü alındı.").addScreenCaptureFromPath(resim1);
 
-        ReusableMethods.bekle(3);
+        ReusableMethods.bekle(2);
 
         // 2-) Tıtle ve content alanlarına fransızca metin girilip girilmediğine test et ve ekran görüntüsü al.
 
@@ -111,7 +111,7 @@ public class TC_10_FranceLanguageTest extends TestBaseRapor {
         titleInput.sendKeys("Test French Title");
         contentInput.sendKeys("Test French Content");
 
-        ReusableMethods.bekle(3);
+        ReusableMethods.bekle(2);
 
         String resim2 = ReusableMethods.raporaResimEkle("II-)FranceLanguage_Title_Content_Filled");
         extentTest.info("2-)Fransızca Title ve Content alanları dolduruldu ve bu haliyle ekran görüntüsü alındı.")
@@ -123,7 +123,7 @@ public class TC_10_FranceLanguageTest extends TestBaseRapor {
         contentInput.clear();
 
         // 3-) SAVE VE SUCCESS MESSAGE
-        ReusableMethods.bekle(3);
+        ReusableMethods.bekle(1);
         actions.moveToElement(hakimPage.bedManagersSaveButton).click().perform();
 
 

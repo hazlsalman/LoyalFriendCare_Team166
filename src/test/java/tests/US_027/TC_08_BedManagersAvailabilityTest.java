@@ -55,7 +55,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
         wait.until(ExpectedConditions.visibilityOf(hakimPage.bedManagersParent));
         actions.moveToElement(hakimPage.bedManagersParent).perform();
 
-        //3-)BED MANAGERS MENÜSÜNE TIKLA
+        //3-) BED MANAGERS MENÜSÜNE TIKLA
         wait.until(ExpectedConditions.elementToBeClickable(hakimPage.bedManagersParent)).click();
 
         //4-) BED MANAGERS ALT MENÜSÜNE TIKLA
