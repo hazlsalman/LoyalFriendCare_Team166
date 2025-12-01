@@ -13,7 +13,7 @@ import utilities.Driver;
 
 import java.time.Duration;
 
-public class TC_13_BedManagerDeleteTest {
+public class TC_13_BedManagersDeleteTest {
 
     HakimPage hakimPage = new HakimPage();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));

@@ -13,9 +13,8 @@ import utilities.ConfigReader;
 import utilities.Driver;
 
 import java.time.Duration;
-import java.util.List;
 
-public class TC_12_BedManagerContentTest {
+public class TC_12_BedManagersContentTest {
 
     HakimPage hakimPage = new HakimPage();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
