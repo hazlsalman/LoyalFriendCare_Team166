@@ -40,37 +40,25 @@ public class TC_09_DontChangeImageButtonTest {
             //4-) Sign In butonuna tıkla.
             hakimPage.loginSignInButton.click();
 
+            // =========================================================
+            // STEPS:
+            // =========================================================
 
-            // --------------------------
-            // ⚙ AYARLAR SİMGESİNE TIKLA
-            // --------------------------
+            // 1-) ⚙ AYARLAR SİMGESİNE TIKLA
             wait.until(ExpectedConditions.elementToBeClickable(hakimPage.SettingsButton)).click();
 
-
-            // --------------------------
-            // SOLDAN AÇILAN SİDEBAR MENÜYÜ, SOLA HOVER İLE AÇ
-            // --------------------------
+            // 2-) SOLDAN AÇILAN SİDEBAR MENÜYÜ, SOLA HOVER İLE AÇ
             Actions actions = new Actions(Driver.getDriver());
             wait.until(ExpectedConditions.visibilityOf(hakimPage.bedManagersParent));
             actions.moveToElement(hakimPage.bedManagersParent).perform();
 
-
-            // --------------------------
-            // BED MANAGERS MENÜSÜNE TIKLA
-            // --------------------------
+            // 3-) BED MANAGERS MENÜSÜNE TIKLA
             wait.until(ExpectedConditions.elementToBeClickable(hakimPage.bedManagersParent)).click();
 
-
-            // --------------------------
-            // BED MANAGERS ALT MENÜSÜNE TIKLA
-            // --------------------------
+            // 4-) BED MANAGERS ALT MENÜSÜNE TIKLA
             wait.until(ExpectedConditions.elementToBeClickable(hakimPage.subBedManagers)).click();
 
-
-            // --------------------------
-            // EDIT BUTONUNA TIKLA
-            // --------------------------
-
+            // 5-) EDIT BUTONUNA TIKLA
             WebElement firstEditButton = Driver.getDriver()
                     .findElement(By.xpath("//a[contains(@class,'fa-edit') and span[text()='Edit']]"));
 
@@ -78,9 +66,8 @@ public class TC_09_DontChangeImageButtonTest {
 
 
             // =========================================================
-            // "Don't Change Image" butonunun varlığını ve işlevselliğini kontrol et
+            // SENARYO: // "Don't Change Image" butonunun varlığını ve işlevselliğini kontrol et
             // =========================================================
-
 
 
             // 1-) Edit sayfası yüklenene kadar bekle

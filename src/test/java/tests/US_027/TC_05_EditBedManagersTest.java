@@ -41,44 +41,35 @@ public void test01() throws InterruptedException {
         hakimPage.loginSignInButton.click();
 
 
-        // --------------------------
-        // ⚙ AYARLAR SİMGESİNE TIKLA
-        // --------------------------
+        // =========================================================
+        // STEPS:
+        // =========================================================
+
+        // 1-) ⚙ AYARLAR SİMGESİNE TIKLA
         wait.until(ExpectedConditions.elementToBeClickable(hakimPage.SettingsButton)).click();
 
-
-        // --------------------------
-        // SOLDAN AÇILAN SİDEBAR MENÜYÜ, SOLA HOVER İLE AÇ
-        // --------------------------
+        // 2-) SOLDAN AÇILAN SİDEBAR MENÜYÜ, SOLA HOVER İLE AÇ
         Actions actions = new Actions(Driver.getDriver());
         wait.until(ExpectedConditions.visibilityOf(hakimPage.bedManagersParent));
         actions.moveToElement(hakimPage.bedManagersParent).perform();
 
-
-        // --------------------------
-        // BED MANAGERS MENÜSÜNE TIKLA
-        // --------------------------
+        // 3-) BED MANAGERS MENÜSÜNE TIKLA
         wait.until(ExpectedConditions.elementToBeClickable(hakimPage.bedManagersParent)).click();
 
 
-        // --------------------------
-        // BED MANAGERS ALT MENÜSÜNE TIKLA
-        // --------------------------
+        // 4-) BED MANAGERS ALT MENÜSÜNE TIKLA
         wait.until(ExpectedConditions.elementToBeClickable(hakimPage.subBedManagers)).click();
 
-
-        // --------------------------
-        // EDIT BUTONUNA TIKLA
-        // --------------------------
-
+        // 5-) EDIT BUTONUNA TIKLA
         WebElement firstEditButton = Driver.getDriver()
                 .findElement(By.xpath("//a[contains(@class,'fa-edit') and span[text()='Edit']]"));
 
         wait.until(ExpectedConditions.elementToBeClickable(firstEditButton)).click();
 
-        // --------------------------
-        // YATAK BİLGİLERİNİ GÜNCELLE
-        // --------------------------
+
+        // =========================================================
+        // SENARYO: YATAK BİLGİLERİNİ GÜNCELLE
+        // =========================================================
 
         //1-)Title değiştir.
         wait.until(ExpectedConditions.elementToBeClickable(hakimPage.bedManagerTitle)).click();
@@ -107,15 +98,12 @@ public void test01() throws InterruptedException {
         hakimPage.bedPrice.clear();
         hakimPage.bedPrice.sendKeys("333");
 
-        // --------------------------
-        // SAVE BUTONUNA TIKLA
-        // --------------------------
+        //5-) SAVE BUTONUNA TIKLA
+
         actions = new Actions(Driver.getDriver());
         actions.moveToElement(hakimPage.bedManagersSaveButton).click().perform();
 
-        // --------------------------
-        // DASHBOARD SAYFASINA DÖNÜŞ VE SUCCESS MESAJI
-        // --------------------------
+        //6-) DASHBOARD SAYFASINA DÖNÜŞ VE SUCCESS MESAJI
         wait.until(ExpectedConditions.visibilityOf(hakimPage.successMessage));
         Assert.assertTrue(hakimPage.successMessage.isDisplayed(), "Success mesajı görünmüyor!");
 

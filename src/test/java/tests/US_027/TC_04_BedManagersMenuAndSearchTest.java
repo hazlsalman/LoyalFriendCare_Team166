@@ -39,41 +39,36 @@ public class TC_04_BedManagersMenuAndSearchTest {
         hakimPage.loginSignInButton.click();
 
 
-        // --------------------------
-        //  ⚙ AYARLAR SİMGESİNE TIKLA
-        // --------------------------
+        // =========================================================
+        // STEPS:
+        // =========================================================
+
+        // 1-) ⚙ AYARLAR SİMGESİNE TIKLA
+
         wait.until(ExpectedConditions.elementToBeClickable(hakimPage.SettingsButton)).click();
 
-        // --------------------------
-        // SOLDAN AÇILAN SİDEBAR MENÜYÜ, SOLLA HOVER İLE AÇ
-        // --------------------------
+        // 2-) SOLDAN AÇILAN SİDEBAR MENÜYÜ, SOLLA HOVER İLE AÇ
+
         Actions actions = new Actions(Driver.getDriver());
         wait.until(ExpectedConditions.visibilityOf(hakimPage.bedManagersParent));
         actions.moveToElement(hakimPage.bedManagersParent).perform();
 
+        // 3-) BED MANAGERS MENÜSÜNE TIKLA
 
-        // --------------------------
-        // BED MANAGERS MENÜSÜNE TIKLA
-        // --------------------------
         wait.until(ExpectedConditions.elementToBeClickable(hakimPage.bedManagersParent)).click();
 
-        // --------------------------
-        // ALT MENÜLERİN AÇILDIĞINI DOĞRULA
-        // --------------------------
+        // 4-) ALT MENÜLERİN AÇILDIĞINI DOĞRULA
+
         wait.until(ExpectedConditions.visibilityOf(hakimPage.subBedManagers));
         wait.until(ExpectedConditions.visibilityOf(hakimPage.createBedManagers));
 
         Assert.assertTrue(hakimPage.subBedManagers.isDisplayed(), "Sub Bed Managers menüsü görünmüyor!");
         Assert.assertTrue(hakimPage.createBedManagers.isDisplayed(), "Create Bed Managers menüsü görünmüyor!");
 
-        // --------------------------
-        // BED MANAGERS ALT MENÜSÜNE TIKLA
-        // --------------------------
+        // 5-) BED MANAGERS ALT MENÜSÜNE TIKLA
         hakimPage.subBedManagers.click();
 
-        // --------------------------
-        // SEARCH KUTUSUNU TEST ET
-        // --------------------------
+        // 6-) SEARCH KUTUSUNU TEST ET
         wait.until(ExpectedConditions.visibilityOf(hakimPage.SearchBox));
         hakimPage.SearchBox.clear();
         hakimPage.SearchBox.sendKeys("Cat Grooming Room");

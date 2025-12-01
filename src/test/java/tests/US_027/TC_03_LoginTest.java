@@ -31,7 +31,7 @@ public class TC_03_LoginTest {
 
 
         // =========================================================
-        // POZİTİF ADIMLAR : KUTULARIN ETKİN OLDUĞUNU DOĞRULAMA
+        // STEPS: KUTULARIN ETKİN OLDUĞUNU DOĞRULAMA
         // =========================================================
         Assert.assertTrue(hakimPage.loginEmailBox.isDisplayed(),
                 "EMAIL kutusu görünmüyor.");
