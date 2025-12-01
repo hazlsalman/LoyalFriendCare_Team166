@@ -1,5 +1,7 @@
 package tests.US_001;
 
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.EnesPage;
 import utilities.ConfigReader;
@@ -7,44 +9,26 @@ import utilities.Driver;
 
 public class TC_02 {
     @Test
-    public void anaSayfayaErisimTesti(){
+    public void aramaKutusuTesti(){
         // Ziyaretçi, herhangi bir giriş veya kayıt yapmadan url ile siteye erişim sağlar.
 
 //        Kayıtlı veya yönetici kullanıcı, url ile siteye erişim sağlar.
         Driver.getDriver().get(ConfigReader.getProperty("url"));
 
-//Siteye erişim sağlayan kullanıcı (ziyaretçi, kayıtlı, yönetici)
-// header kısmındaki logo, sign in, sign up butonu ve Home, About Us,
-// Departments vb. menü ögelerinin görünür olduğunu doğrular.
+        // Siteye erişim sağlayan kullanıcı  arama kutusunu görür ve kutunun içine aramak için bir kelime yazar. (Rabies Vaccine)
+
+
         EnesPage enesPage =new EnesPage();
-        enesPage.tumHeader.isDisplayed();
-        enesPage.headerLogo.isDisplayed();
-        enesPage.headerHome.isDisplayed();
-        enesPage.headerAboutUs.isDisplayed();
-        enesPage.headerDoctorsMenu.isDisplayed();
-        enesPage.headerDeparmentsMenu.isDisplayed();
-        enesPage.headerMedicinesMenu.isDisplayed();
-        enesPage.headerVaccinationsMenu.isDisplayed();
-        enesPage.signInButton.isDisplayed();
-        enesPage.signUpButton.isDisplayed();
-
-
-        //Kullanıcı (ziyaretçi, kayıtlı, yönetici) header kısmındaki logo, sign in, sign up butonu ve Home, About Us,
-        // Departments vb. menü ögelerini tıklanabildiğini doğrular.
-        enesPage.headerLogo.isEnabled();
-        enesPage.headerHome.isEnabled();
-        enesPage.headerAboutUs.isEnabled();
-        enesPage.headerDeparmentsMenu.isEnabled();
-        enesPage.headerDoctorsMenu.isEnabled();
-        enesPage.headerMedicinesMenu.isEnabled();
-        enesPage.headerVaccinationsMenu.isEnabled();
-        enesPage.signInButton.isEnabled();
-        enesPage.signUpButton.isEnabled();
-
-
+        WebElement aramaKutusuElement=enesPage.aramaKutusu;
+        Assert.assertTrue(aramaKutusuElement.isDisplayed());
+        enesPage.aramaKutusu.sendKeys("Rabies Vaccine");
+        WebElement searchButtonElement=enesPage.searchButton;
+        Assert.assertTrue(searchButtonElement.isEnabled());
+        enesPage.searchButton.click();
+        //sonuç bulunabildiği doğrulanr
+        int actualListelenenSonuc=enesPage.listelenenSonuc.size();
+        Assert.assertTrue(actualListelenenSonuc>0);
         Driver.quitDriver();
-
-
 
 
 
