@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.List;
+
 public class EnesPage {
     public EnesPage(){
         PageFactory.initElements(Driver.getDriver(),this);
@@ -78,7 +80,7 @@ public class EnesPage {
     @FindBy (xpath = "//*[@class='fab fa-facebook-square']")
     public WebElement  footerFacebook;
 
-    @FindBy (xpath = "//*[@data-target='#collapse_ft_2']")
+    @FindBy (xpath = "//*[@id=\"page\"]/footer/div/div[1]/div[2]")
     public WebElement  footerDeparmentsYazi;
 
     @FindBy (xpath = "//*[@data-target='#collapse_ft_3']")
@@ -105,7 +107,7 @@ public class EnesPage {
     @FindBy (xpath = "(//*[@class=\"form-control\"])[4]")
     public WebElement  doctorsMesajFormu;
 
-    @FindBy (xpath = "//*[@type=\"submit\"]")
+    @FindBy (xpath = "//*[@class=\"add_top_30 btn_1 full-width purchase\"]")
     public WebElement  randevuAlmaButon;
 
     @FindBy (xpath = "//*[@class=\"current\"][1]")
@@ -131,5 +133,44 @@ public class EnesPage {
 
     @FindBy (xpath = "//*[@class='btn_add'][1]")
     public WebElement gorunenUserName;
+
+    @FindBy (xpath = "//*[@class=\"col-lg-12\"][1]\n")
+    public List<WebElement> listelenenSonuc;
+
+    @FindBy (xpath = "//*[@id=\"page\"]/main/div/div[2]/div[1]/a/figure/img\n")
+    public WebElement bodyWellness;
+
+    @FindBy (xpath = "//*[@id=\"page\"]/main/div/div[3]/h2")
+    public WebElement populerDoctorsText;
+
+    @FindBy (xpath = "//*[@id=\"page\"]/main/div[1]/div/h1")
+    public WebElement doctorsHeading;
+
+    @FindBy (xpath = "//*[@id=\"page\"]/main/div[1]/div/h1")
+    public WebElement doctorsIsmiHeading;
+
+    @FindBy (xpath = "//*[@class=\"d-inline\"]\n")
+    public WebElement randevuHeading;
+
+    @FindBy (xpath = "//*[@id=\"page\"]/main/div/div[5]/h2\n")
+    public WebElement vaccinationsForPetsBaslik;
+
+    @FindBy (xpath = "//*[@id=\"page\"]/main/div[1]/div/h1")
+    public WebElement vaccinationsText;
+
+    @FindBy (xpath = "//*[@id=\"page\"]/main/div[1]/div/h1")
+    public WebElement rabiesVaccineText;
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
