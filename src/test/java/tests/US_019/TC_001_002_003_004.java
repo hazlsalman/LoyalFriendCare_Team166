@@ -7,7 +7,7 @@ import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-public class TC_001_002_003 {
+public class TC_001_002_003_004 {
 
     //Sign Out seçeneğinin görünürlüğünü ve çalışmasını doğrulamak
     //Sign Out sonrası yönlendirmeyi doğrulamak
@@ -16,6 +16,8 @@ public class TC_001_002_003 {
 
     MelahatnurPage melahatnurPage = new MelahatnurPage();
 
+
+    //Sign Out seçeneğinin görünürlüğünü doğrulamak
     @Test
     public void signoutTesti() {
 
@@ -37,6 +39,8 @@ public class TC_001_002_003 {
 
     }
 
+
+    //Sign Out butonu tiklanabilirligini ve sign out sonrası yönlendirmeyi ve doğrulamak
     @Test(dependsOnMethods = "signoutTesti")
             public void signoutTest01(){
         //signout butonu tiklanabilirligi
@@ -47,19 +51,53 @@ public class TC_001_002_003 {
 
     }
 
-    @Test(dependsOnMethods = "signoutTesti")
+
+    //Çıkış yapıldıktan sonra geri tuşu/yenileme ile sisteme geri dönülememesini doğrulamak
+
+    @Test(dependsOnMethods = "signoutTest01")
     public void signoutTest02(){
-        // sayfayi yenile
+
+        // sayfayı yenile
         Driver.getDriver().navigate().refresh();
-        Assert.assertFalse(melahatnurPage.signOutButonu.isDisplayed());
+        ReusableMethods.bekle(1);
 
-        // Geri tuşu
+        // gerçek logout kontrolü:
+        Assert.assertTrue(melahatnurPage.signinButonu.isDisplayed());
+
+
+        // geri tuşu
         Driver.getDriver().navigate().back();
-        Assert.assertFalse(melahatnurPage.signOutButonu.isDisplayed());
+        ReusableMethods.bekle(1);
 
-        //sayfasyi yenileyince ya da geri yapinca kullanici hesabindan cikmiyor
-        Driver.quitDriver();
+        // geri gelince yine login ekranı görünmeli
+        Assert.assertTrue(melahatnurPage.signinButonu.isDisplayed());
+
     }
 
 
+
+    //Sign Out işleminin farklı roller (kullanıcı & admin) için sorunsuz çalıştığını doğrulamak
+    @Test (dependsOnMethods = "signoutTest02")
+    public void signoutTesti03() {
+
+
+        Assert.assertTrue(melahatnurPage.signinButonu.isDisplayed());
+
+        ReusableMethods.bekle(2);
+            melahatnurPage.signinButonu.click();
+
+            melahatnurPage.mailKutusu
+                    .sendKeys(ConfigReader.getProperty("adminGecerliMail"));
+
+            melahatnurPage.passwordKutusu
+                    .sendKeys(ConfigReader.getProperty("adminGecerliPassword"));
+
+            melahatnurPage.girisButonu.click();
+            melahatnurPage.signOutButonu.click();
+        Driver.quitDriver();
+
         }
+
+    }
+
+

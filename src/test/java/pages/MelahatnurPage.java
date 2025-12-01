@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.logging.XMLFormatter;
+
 public class MelahatnurPage {
 
     public MelahatnurPage(){
@@ -33,7 +35,26 @@ public class MelahatnurPage {
     @FindBy(xpath = "//a[text() =' Sign Out']")
     public WebElement signOutButonu;
 
+    @FindBy(xpath = "//*[contains(text(),'admin.atakan.durman')]")
+    public WebElement adminPaneliButonu;
 
+    @FindBy(xpath = "//span[.='Roles']")
+    public WebElement rolesElementi;
+
+    @FindBy(xpath = "//a[.='Create Role']")
+    public WebElement createRolesElementi;
+
+    @FindBy(xpath = "//label[.='Display Name']")
+    public WebElement displayNameElementi;
+
+    @FindBy(xpath = "//div[contains(@class,'sidebar')]")
+    public WebElement solMenu;
+
+    @FindBy(xpath = "//a[.='Learn More at Bed managers']")
+    public WebElement ozetBilgiButonu;
+
+    @FindBy(xpath = "//a[@class='btn btn-tag btn-success btn-tag-rounded']")
+    public WebElement ozetBilgiTiklanabilirligi;
 
 
 
