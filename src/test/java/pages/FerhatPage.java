@@ -22,4 +22,7 @@ public class FerhatPage {
 
     @FindBy(xpath = "//li[i[contains(@class,'fa-money-bill-alt')]]/span")
     public WebElement fiyatBilgisi;
+
+    @FindBy(xpath = "//section[@id='description']")
+    public WebElement vaccinationParagraf;
 }
