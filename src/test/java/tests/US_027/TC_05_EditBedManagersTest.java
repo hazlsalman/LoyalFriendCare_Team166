@@ -1,0 +1,115 @@
+package tests.US_027;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import pages.HakimPage;
+import utilities.ConfigReader;
+import utilities.Driver;
+import java.time.Duration;
+
+public class TC_05_EditBedManagersTest {
+
+    HakimPage hakimPage = new HakimPage();
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+
+
+@Test
+public void test01() throws InterruptedException {
+
+
+        // =========================================================
+        // PRE-CONDITION:
+        // =========================================================
+
+        //1-) Anasayfaya git.
+        Driver.getDriver().get(ConfigReader.getProperty("url"));
+
+        //2-) Sıgn In butonuna bas.
+        hakimPage.homePageSignInButton.click();
+
+        //3-) Email ve password gir
+        wait.until(ExpectedConditions.visibilityOf(hakimPage.loginEmailBox))
+                .sendKeys("admin.abdul.hakim.kazanci@loyalfriendcare.com");
+        hakimPage.loginPasswordBox.sendKeys("LFCare.0201");
+
+        //4-) Sign In butonuna tıkla.
+        hakimPage.loginSignInButton.click();
+
+
+        // =========================================================
+        // STEPS:
+        // =========================================================
+
+        // 1-) ⚙ AYARLAR SİMGESİNE TIKLA
+        wait.until(ExpectedConditions.elementToBeClickable(hakimPage.SettingsButton)).click();
+
+        // 2-) SOLDAN AÇILAN SİDEBAR MENÜYÜ, SOLA HOVER İLE AÇ
+        Actions actions = new Actions(Driver.getDriver());
+        wait.until(ExpectedConditions.visibilityOf(hakimPage.bedManagersParent));
+        actions.moveToElement(hakimPage.bedManagersParent).perform();
+
+        // 3-) BED MANAGERS MENÜSÜNE TIKLA
+        wait.until(ExpectedConditions.elementToBeClickable(hakimPage.bedManagersParent)).click();
+
+
+        // 4-) BED MANAGERS ALT MENÜSÜNE TIKLA
+        wait.until(ExpectedConditions.elementToBeClickable(hakimPage.subBedManagers)).click();
+
+        // 5-) EDIT BUTONUNA TIKLA
+        WebElement firstEditButton = Driver.getDriver()
+                .findElement(By.xpath("//a[contains(@class,'fa-edit') and span[text()='Edit']]"));
+
+        wait.until(ExpectedConditions.elementToBeClickable(firstEditButton)).click();
+
+
+        // =========================================================
+        // SENARYO: YATAK BİLGİLERİNİ GÜNCELLE
+        // =========================================================
+
+        //1-)Title değiştir.
+        wait.until(ExpectedConditions.elementToBeClickable(hakimPage.bedManagerTitle)).click();
+        hakimPage.bedManagerTitle.clear();
+        hakimPage.bedManagerTitle.sendKeys("Mırr Haven");
+
+        //2-)Contenti değiştir.
+        wait.until(ExpectedConditions.elementToBeClickable(hakimPage.bedManagerContent)).click();
+        hakimPage.bedManagerContent.clear();
+        hakimPage.bedManagerContent.sendKeys("Clean, safe, and well-managed beds for hospitalized pets.");
+
+        //3-) Dropdownlar: Departments, Created Doctor, Medicines (sadece seçim)
+        WebElement departmentDropdown = Driver.getDriver().findElement(By.xpath("//span[@class='select2-selection__rendered']"));
+        actions.moveToElement(departmentDropdown).click().perform();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[text()='Wellness']"))).click();
+
+        WebElement doctorDropdown = Driver.getDriver().findElement(By.xpath("(//span[@class='select2-selection__rendered'])[2]"));
+        actions.moveToElement(doctorDropdown).click().perform();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[text()='Dr. Marcus Rodriguez']"))).click();
+
+        WebElement medicinesDropdown = Driver.getDriver().findElement(By.xpath("(//span[@class='select2-selection__rendered'])[3]"));
+        actions.moveToElement(medicinesDropdown).click().perform();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//li[contains(text(),'Baytril')]"))).click();
+
+        //4-) BED PRİCE alanına miktar gir.
+        hakimPage.bedPrice.clear();
+        hakimPage.bedPrice.sendKeys("333");
+
+        //5-) SAVE BUTONUNA TIKLA
+
+        actions = new Actions(Driver.getDriver());
+        actions.moveToElement(hakimPage.bedManagersSaveButton).click().perform();
+
+        //6-) DASHBOARD SAYFASINA DÖNÜŞ VE SUCCESS MESAJI
+        wait.until(ExpectedConditions.visibilityOf(hakimPage.successMessage));
+        Assert.assertTrue(hakimPage.successMessage.isDisplayed(), "Success mesajı görünmüyor!");
+
+        // Dashboard URL kontrol
+        wait.until(ExpectedConditions.urlToBe("https://qa.loyalfriendcare.com/en/Dashboard/Posts"));
+
+        Driver.quitDriver();
+    }
+}

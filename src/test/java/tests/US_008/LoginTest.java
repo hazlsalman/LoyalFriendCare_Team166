@@ -8,6 +8,7 @@ import pages.AtakanPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
+
 public class LoginTest {
 
     @BeforeMethod
