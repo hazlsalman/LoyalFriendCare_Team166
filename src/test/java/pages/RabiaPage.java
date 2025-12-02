@@ -76,7 +76,8 @@ public class RabiaPage {
     @FindBy (xpath = "//*[@data-target='#collapse_ft_2']")
     public WebElement  footerDeparmentsYazi;
 
-
+    @FindBy (xpath = "//*[@class='form-control']")
+    public WebElement  aramaKutusu;
 
 
 
