@@ -44,4 +44,5 @@ public class TC_02_SignUpPageAccess {
         // 3-) Driver'ı kapat.
         Driver.quitDriver();
     }
+
 }

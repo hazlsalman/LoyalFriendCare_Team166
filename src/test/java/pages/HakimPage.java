@@ -127,5 +127,4 @@ public class HakimPage {
     public WebElement deleteSuccessMessage;
 
 
-
 }

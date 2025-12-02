@@ -22,5 +22,6 @@ public class TC_01_HomePageAccess {
             // 3- Driver'ı kapat.
             Driver.quitDriver();
         }
-    }
+
+}
 
