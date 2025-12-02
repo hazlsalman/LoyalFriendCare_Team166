@@ -83,4 +83,19 @@ public class HazalPage {
     @FindBy (xpath = "//li[text()='Dr. Olivia Bennett']")
     public WebElement doctorsVaccinations;
 
+    @FindBy (xpath = "(//a[text()='Medicines'])[3]")
+    public WebElement headerMedicines;
+
+    @FindBy(xpath = "//label[@class='container_check']")
+    public List<WebElement> solListeIlacBasliklari;
+
+    @FindBy (xpath = "//div[@class='wrapper']")
+    public List<WebElement> anaBolumIlacBasliklari;
+
+    @FindBy (xpath = "//li[text()='Wellness']")
+    public WebElement departmentsMedicines;
+
+    @FindBy (xpath = "//li[text()='Dr. Alejandro Martinez']")
+    public WebElement doctorsMedicines;
+
 }
