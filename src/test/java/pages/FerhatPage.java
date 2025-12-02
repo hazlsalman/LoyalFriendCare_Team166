@@ -16,4 +16,13 @@ public class FerhatPage {
 
     @FindBy(xpath = "//h2[.='Beds Departments']")
     public WebElement bedsDepartments;
+
+    @FindBy(xpath = "//a[@class='grid_item small']")
+    public List<WebElement> bedsDepartmentsLinkList;
+
+    @FindBy(xpath = "//li[i[contains(@class,'fa-money-bill-alt')]]/span")
+    public WebElement fiyatBilgisi;
+
+    @FindBy(xpath = "//section[@id='description']")
+    public WebElement vaccinationParagraf;
 }
