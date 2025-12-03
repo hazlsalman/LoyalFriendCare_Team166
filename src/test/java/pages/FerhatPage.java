@@ -58,4 +58,10 @@ public class FerhatPage {
 
     @FindBy(xpath = "//span[text()='User deleted successfully']")
     public WebElement basariText;
+
+    @FindBy(id = "search-table")
+    public WebElement searchKutusu;
+
+    @FindBy(xpath = "//p[text()='LocalFriendCare']")
+    public WebElement aramaSonucUser;
 }
