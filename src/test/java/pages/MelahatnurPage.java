@@ -77,6 +77,10 @@ public class MelahatnurPage {
     @FindBy(xpath = "//input[@id='submit-contact-detail']")
     public WebElement  appointmentBookingButonu;
 
+    @FindBy(xpath = "//div[contains(@class,'error') or contains(text(),'phone')]")
+    public WebElement phoneErrorMessage;
+
+
 
 
 

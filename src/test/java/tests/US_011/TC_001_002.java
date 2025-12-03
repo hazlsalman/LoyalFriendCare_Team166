@@ -12,9 +12,17 @@ public class TC_001_002 {
 
     //Body bölümündeki departman kartlarının görünürlüğünü
     // ve tıklanabilirliğini doğrulamak
+    // Departman detay sayfasında randevu alanlarının görünürlüğünü
+    // ve formun eksik doldurulduğunda uyarı verdiğini doğrulamak failed
+    // Wellness ve Doctor alanlarının zorunlu olduğunu doğrulamak
+    //Geçersiz ve eksik Phone Number girişlerini doğrulamak failed
+    //Randevu bilgileri doğru ve eksiksiz girildiğinde başarıyla oluşturulmasını doğrulamak
+
+
+
 
     @Test
-    public void siteyegirisTest() {
+    public void departmanDetayTest01() {
         Driver.getDriver().get(ConfigReader.getProperty("url"));
         MelahatnurPage melahatnurPage = new MelahatnurPage();
 
@@ -45,17 +53,8 @@ public class TC_001_002 {
     }
        //  randevu alanlarının formun eksik doldurulduğunda uyarı verdiğini doğrulamak
 
-        @Test (dependsOnMethods = "siteyegirisTest")
-        public void randevuolusturmaTesti() {
-
-
-
-
-
-
-
-
-
+    @Test (dependsOnMethods = "siteyegirisTest")
+    public void randevuolusturmaTesti() {
 
 
         }
