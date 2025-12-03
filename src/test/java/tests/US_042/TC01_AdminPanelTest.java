@@ -5,12 +5,12 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.yaprakPage;
+import pages.YaprakPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
-public class TC01_AdminPanelTest extends yaprakPage {
+public class TC01_AdminPanelTest extends YaprakPage {
 
     @BeforeClass
     public void setupAdminLogin() {
@@ -27,16 +27,21 @@ public class TC01_AdminPanelTest extends yaprakPage {
 
     @Test(priority = 1)
     public void tC01_adminGirisDogrulama() {
-
         SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(adminPanelLinki.isDisplayed(),
+                "Giriş yapılamadı veya Admin butonu görünmedi!");
 
-        softAssert.assertTrue(
-                adminPanelLinki.isDisplayed(),
-                "tC01_Giriş yapılamadı veya Admin butonu görünmedi!"
-        );
+        adminPanelLinki.click();
+        ReusableMethods.bekle(2);
 
-        System.out.println("tC01_Admin girişi başarılı ");
+        softAssert.assertTrue(profilMenuButonu.isDisplayed(),
+                "Admin paneline geçiş yapılamadı!");
 
+        String currentUrl = Driver.getDriver().getCurrentUrl();
+        softAssert.assertTrue(currentUrl.contains("admin"),
+                "URL'de admin yazmıyor!");
+
+        System.out.println("Admin paneline geçiş başarılı.");
         softAssert.assertAll();
     }
 
@@ -45,7 +50,7 @@ public class TC01_AdminPanelTest extends yaprakPage {
 
         SoftAssert softAssert = new SoftAssert();
 
-        adminPanelLinki.click();
+        profilMenuButonu.click();
         ReusableMethods.bekle(3);
 
         softAssert.assertTrue(profilMenuButonu.isDisplayed(),

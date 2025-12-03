@@ -5,9 +5,11 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class yaprakPage {
+import java.util.List;
 
-    public  yaprakPage(){
+public class YaprakPage {
+
+    public YaprakPage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
@@ -26,7 +28,21 @@ public class yaprakPage {
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement anasayfaSigninGirisButonu;
 
+    // 1. Ana Departmanlar Listesi
+    @FindBy(xpath = "//label[@class='container_check']/a")
+    public List<WebElement> departmanListesi;
 
+    // 2. Beds (Yatak) Alt Linkleri
+    @FindBy(xpath = "//a[contains(@href,'/Beds/')]")
+    public List<WebElement> bedsLinks;
+
+    // 3. Detay Sayfasındaki Bilgiler (Doctor, Price vs.)
+    @FindBy(xpath = "//ul/li")
+    public List<WebElement> detayBilgiListesi;
+
+    // 4. Randevu Butonu
+    @FindBy(xpath = "//input[@value='Appointment Booking']")
+    public WebElement bookingButton;
     //US_0014
 
     @FindBy(xpath = "//*[@id='menu']/ul/li[3]/span/a")
@@ -59,6 +75,8 @@ public class yaprakPage {
 
     @FindBy(xpath = "//div[@class='alert alert-success']")
     public WebElement successMessage;
+    @FindBy(xpath = "//h3[text()='Vaccinations Room']")
+    public WebElement vaccinationsRoomLink;
 
 
     // US_042
@@ -66,6 +84,7 @@ public class yaprakPage {
     // Admin ana sayfadaki “admin.yaprak.ersan” butonu
     @FindBy(xpath = "//a[@class='btn_add']")
     public WebElement adminPanelLinki;
+
 
     // Admin panelde profil menü butonu (resimli)
     @FindBy(xpath = "//button[@class='profile-dropdown-toggle']")
@@ -88,11 +107,51 @@ public class yaprakPage {
     @FindBy(xpath = "//*[@class='pull-left']")
     public WebElement profilLogoutButton;
 
-    // Admin panel yönlendirme URL sabiti
-    public static final String ADMIN_PANEL_URL = "https://qa.loyalfriendcare.com/en/admin";
-
     @FindBy(id = "button")
     public WebElement dontChangeImageCheckbox;
+
+
+    //edit admin profile
+    @FindBy(name = "Phone")
+    public WebElement editPhoneBox;
+
+    @FindBy(xpath = "//input[@id='password']")
+    public WebElement editPasswordBox;
+
+    @FindBy(xpath = "//input[@id='password_confirmation']")
+    public WebElement editPasswordConfirmBox;
+
+    @FindBy(xpath = "//input[@id='email']")
+    public WebElement editEmailBox;
+
+    @FindBy(xpath = "//button[contains(@class,'btn-success') and @type='submit']")
+    public WebElement saveButton;
+
+
+    @FindBy(xpath = "//div[@class='dz-default dz-message']")
+    public WebElement fileUploadArea;
+
+    @FindBy(id = "dropzone")
+    public WebElement dropzoneForm;
+
+
+    @FindBy(xpath = "//div[@class='dz-default dz-message']")
+    public WebElement gorunurDosyaYuklemeAlani;
+
+
+    @FindBy(css = "#dropzone input[type='file']")
+    public WebElement gizliInput;
+
+    // Yükleme sonrası çıkan dosya ismini taşıyan element
+    @FindBy(css = ".dz-filename span")
+    public WebElement yuklenenDosyaIsmi;
+
+    // Hata mesajı elementi
+    @FindBy(css = ".dz-error-message span")
+    public WebElement hataMesaji;
+
+    @FindBy(xpath = "//*[text()='User Updated successfully.']")
+    public WebElement userUpdatedMessage;
 
 
 }
