@@ -64,4 +64,31 @@ public class FerhatPage {
 
     @FindBy(xpath = "//p[text()='LocalFriendCare']")
     public WebElement aramaSonucUser;
+
+    @FindBy(xpath = "//a[text()='Create User']")
+    public WebElement createUsersLink;
+
+    @FindBy(xpath = "//input[@id='name']")
+    public WebElement createUsersId;
+
+    @FindBy(xpath = "//input[@id='Phone']")
+    public WebElement createUsersPhone;
+
+    @FindBy(xpath = "//input[@type='checkbox']")
+    public WebElement checkBoxButton;
+
+    @FindBy(xpath = "(//input[@type='password'])[1]")
+    public WebElement passwordKutusu;
+
+    @FindBy(xpath = "(//input[@type='password'])[2]")
+    public WebElement ikinciPasswordKutusu;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement saveButton;
+
+    @FindBy(xpath = "//input[@type='email']")
+    public WebElement emailKutusu;
+
+    @FindBy(xpath = "//span[text()='User Store successfully.']")
+    public WebElement basariMesaji;
 }
