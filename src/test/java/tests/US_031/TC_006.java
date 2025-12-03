@@ -22,7 +22,6 @@ public class TC_006 {
     Actions actions = new Actions(Driver.getDriver());
     actions.moveByOffset(5, 200).perform();
     dogukanPage.dropDownMenuDoctorsButton.click();
-    dogukanPage.doctorsSubMenuButton.click();
     dogukanPage.createDoctorsMenuButton.click();
     dogukanPage.doctorsTitleBox.sendKeys("Ali Veli");
     dogukanPage.doctorsContentBox.sendKeys("Profession / Veterinarian");
@@ -35,8 +34,8 @@ public class TC_006 {
     Assert.assertTrue(dogukanPage.newDoctorNameText.isDisplayed());
     dogukanPage.doctorEditButton.click();
     Assert.assertTrue(dogukanPage.doctorsTitleBox.isDisplayed());
-    Assert.assertTrue(dogukanPage.doctorsContentBox.isDisplayed());
-    Assert.assertTrue(dogukanPage.dropFileBox.isDisplayed());
+    Assert.assertTrue(dogukanPage.doctorEditContentBox.isDisplayed());
+    Assert.assertTrue(dogukanPage.dropFileBoxMessageArea.isDisplayed());
     Driver.quitDriver();
 }
 }

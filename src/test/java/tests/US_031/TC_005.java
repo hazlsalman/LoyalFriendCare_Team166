@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import pages.DogukanPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class TC_005 {
         dogukanPage.profileSettingsButton.click();
         Actions actions = new Actions(Driver.getDriver());
         actions.moveByOffset(5, 200).perform();
+        ReusableMethods.bekle(1);
         dogukanPage.dropDownMenuDoctorsButton.click();
         dogukanPage.doctorsSubMenuButton.click();
 

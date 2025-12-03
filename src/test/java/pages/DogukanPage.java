@@ -101,5 +101,9 @@ public class DogukanPage {
     @FindBy(xpath = "//span[.='Doctors deleted successfully']")
     public WebElement doctorDeleteSuccessMessage;
 
+    @FindBy(xpath = "(//textarea[@class='form-control'])[1]")
+    public WebElement doctorEditContentBox;
 
+    @FindBy(xpath = "//*[@class='dz-default dz-message']")
+    public WebElement dropFileBoxMessageArea;
 }
