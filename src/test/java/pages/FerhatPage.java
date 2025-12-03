@@ -25,4 +25,28 @@ public class FerhatPage {
 
     @FindBy(xpath = "//section[@id='description']")
     public WebElement vaccinationParagraf;
+
+    @FindBy(xpath = "(//a[@class='btn_add'])[1]")
+    public WebElement signinButton;
+
+    @FindBy(id = "email")
+    public WebElement aramaKutusuId;
+
+    @FindBy(xpath = "//input[@id='password']")
+    public WebElement aramaKutusuPassword;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement girisEkraniButton;
+
+    @FindBy(xpath = "//div[@class='scroll-wrapper menu-items']")
+    public WebElement userMenu;
+
+    @FindBy(xpath = "//span[text()='Users']")
+    public WebElement dropdown;
+
+    @FindBy(xpath = "//a[text()='Users']")
+    public WebElement usersDropdown;
+
+    @FindBy(xpath = "//td[@class='v-align-middle semi-bold sorting_1']")
+    public List<WebElement> kullaniciList;
 }
