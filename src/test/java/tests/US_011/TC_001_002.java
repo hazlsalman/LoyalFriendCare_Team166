@@ -37,7 +37,7 @@ public class TC_001_002 {
         //Departman Detay sayfasi acildi
         melahatnurPage.wellnessButonu.click();
 
-        Assert.assertTrue(melahatnurPage.appointmentBookingYazisi.isDisplayed());
+        Assert.assertTrue(melahatnurPage.randevuAlmaButon.isDisplayed());
         // randevu olusturma sayfasindayiz
 
 

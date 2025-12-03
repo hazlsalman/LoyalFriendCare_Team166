@@ -30,7 +30,7 @@ public class MelahatnurPage {
     public WebElement wellnessButonu ;
 
     @FindBy(xpath = "//h5[text()='Appointment Booking']")
-    public WebElement appointmentBookingYazisi ;
+    public WebElement randevuAlmaButon ;
 
     @FindBy(xpath = "//a[text() =' Sign Out']")
     public WebElement signOutButonu;
@@ -55,6 +55,27 @@ public class MelahatnurPage {
 
     @FindBy(xpath = "//a[@class='btn btn-tag btn-success btn-tag-rounded']")
     public WebElement ozetBilgiTiklanabilirligi;
+
+    @FindBy (xpath = "//*[@alt='Dr. Alejandro Martinez']")
+    public WebElement doktorKartAlejandro;
+
+    @FindBy (xpath = "//*[@alt='Wellness']")
+    public WebElement bolumKartWelness;
+
+    @FindBy(id = "Date")
+    public WebElement randevuTarihKutusu;
+
+    @FindBy(xpath = "//input[@id='serial']")
+    public WebElement randevuTelefonKutusu;
+
+    @FindBy(xpath = "//textarea[@placeholder='Create Message']")
+    public WebElement randevuMesajKutusu;
+
+    @FindBy(xpath = "//div[contains(text(),'well-deserved success')]")
+    public WebElement randevuOnayMesaji;
+
+    @FindBy(xpath = "//input[@id='submit-contact-detail']")
+    public WebElement  appointmentBookingButonu;
 
 
 
