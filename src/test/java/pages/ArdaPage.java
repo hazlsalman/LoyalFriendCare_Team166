@@ -63,6 +63,20 @@ public class ArdaPage {
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement loginSubmitButton;
 
+    @FindBy(xpath = "//a[contains(@href,'logout')]")
+    public WebElement signOutButton;
+
+    @FindBy(xpath = "//button[@type='submit' and contains(text(),'Login')]")
+    public WebElement loginPageLoginButton;
+
+    @FindBy(xpath = "//span[@class='title' and text()='Medicines']")
+    public WebElement sidebarMedicines;
+    @FindBy(xpath = "//nav[@class='page-sidebar']")
+    public WebElement sidebarMenu;
+
+
+
+
 
 
 

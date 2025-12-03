@@ -57,6 +57,9 @@ public class AtakanPage {
     @FindBy(xpath = "//li[contains(text(),'color info')]")
     public WebElement departmentsColor_colorInfo;
 
+    @FindBy(xpath = "//li[contains(text(),'color success')]")
+    public WebElement departmentsColor_colorSuccess;
+
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement crateDepartmentsSaveButonu;
 
@@ -75,6 +78,22 @@ public class AtakanPage {
     @FindBy(xpath = "//a[@class='btn btn-complete btn-cons btn-animated from-left fa fa-edit']")
     public WebElement editButonu;
 
+    @FindBy(xpath = "//div[@class='card-title']")
+    public WebElement tableDepartments;
 
+    @FindBy(id = "tableWithSearch_info")
+    public WebElement listeSonucYazisi;
+
+    @FindBy(xpath = "//button[@*='submit']")
+    public WebElement editSaveDepartmentsButonu;
+
+    @FindBy(xpath = "//*[text()='Departments Updated successfully.']")
+    public WebElement editDepartmentsUpdatedYazisi;
+
+    @FindBy(xpath = "//*[text()='Delete']")
+    public WebElement deleteButonu;
+
+    @FindBy(xpath = "//*[text()='Departments deleted successfully']")
+    public WebElement deleteYazisi;
 
 }

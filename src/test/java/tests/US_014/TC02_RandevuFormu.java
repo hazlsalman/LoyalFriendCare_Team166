@@ -10,14 +10,17 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pages.yaprakPage;
+import org.testng.asserts.SoftAssert;
+import pages.YaprakPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.time.Duration;
 
-public class TC_RandevuFormu extends yaprakPage {
+public class TC02_RandevuFormu extends YaprakPage {
+
+
 
     @BeforeClass
     public void setupSignIn() {
@@ -30,7 +33,6 @@ public class TC_RandevuFormu extends yaprakPage {
         ReusableMethods.bekle(3);
     }
 
-
     @Test(priority = 1)
     public void tC04_takvimIkonuTarihSecimi() {
         Driver.getDriver().get("https://qa.loyalfriendcare.com/en/Departments/vaccinations");
@@ -41,13 +43,14 @@ public class TC_RandevuFormu extends yaprakPage {
         vaccinationsRoomLink.click();
         ReusableMethods.bekle(2);
 
-        Assert.assertTrue(appointmentDateInput.isDisplayed(), "Form görünmüyor!");
+        Assert.assertTrue(appointmentDateInput.isDisplayed(), "tC04_Form görünmüyor!");
         appointmentDateInput.click();
         appointmentDateInput.clear();
         appointmentDateInput.sendKeys("12/12/2025", Keys.TAB);
+
         Assert.assertFalse(
                 appointmentDateInput.getAttribute("value").isEmpty(),
-                "Tarih seçimi yapılamadı!");
+                "tC04_Tarih seçimi yapılamadı!");
     }
 
     @Test(priority = 3)
@@ -65,31 +68,23 @@ public class TC_RandevuFormu extends yaprakPage {
         appointmentDateInput.sendKeys("01/01/2023");
         ReusableMethods.bekle(1);
 
-        // Departman
         wait.until(ExpectedConditions.elementToBeClickable(appointmentDepartmentDD)).click();
         WebElement deptOption = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//div[@class='nice-select wide open']//li[text()='Dermatology']")));
         deptOption.click();
-        ReusableMethods.bekle(1);
 
-        // Doktor
         wait.until(ExpectedConditions.elementToBeClickable(appointmentDoctorDD)).click();
         WebElement doctor = wait.until(ExpectedConditions.presenceOfElementLocated(
                 By.xpath("//div[@class='nice-select wide open']//li[contains(.,'Dr. Isabella Wong')]")));
 
-        // Eğer click engellenirse alternatif: move + click
         actions.moveToElement(doctor).pause(300).click(doctor).perform();
-        ReusableMethods.bekle(1);
-
 
         actions.sendKeys(Keys.TAB).sendKeys(Keys.TAB).perform();
         ReusableMethods.bekle(1);
 
-
         appointmentMessageArea.clear();
-        appointmentMessageArea.sendKeys("Negatif Test 123");
+        appointmentMessageArea.sendKeys("tC05_Negatif Test 123");
 
-        // Submit
         actions.moveToElement(appointmentSubmitBtn).click().perform();
         ReusableMethods.bekle(2);
 
@@ -100,7 +95,7 @@ public class TC_RandevuFormu extends yaprakPage {
             success = false;
         }
 
-        Assert.assertFalse(success, "💛 HATA: Geçersiz bilgiyle gönderilen formda başarı mesajı göründü!");
+        Assert.assertFalse(success, "tC05 💛Geçersiz bilgiyle gönderilen formda başarı mesajı göründü!");
         System.out.println("✅ TC_05 Negatif test geçti (hata mesajı bekleniyordu).");
 
         ReusableMethods.tarihliTumSayfaResimCek(Driver.getDriver());
@@ -108,6 +103,8 @@ public class TC_RandevuFormu extends yaprakPage {
 
     @Test(priority = 2)
     public void tC06_pozitifTestRandevuOlusturma() {
+
+        SoftAssert softAssert = new SoftAssert();
 
         Driver.getDriver().get("https://qa.loyalfriendcare.com/en/Beds/vaccinations-room");
         ReusableMethods.bekle(2);
@@ -120,50 +117,48 @@ public class TC_RandevuFormu extends yaprakPage {
         appointmentDateInput.clear();
         appointmentDateInput.sendKeys("02/02/2025");
         appointmentDateInput.sendKeys(Keys.TAB);
-        ReusableMethods.bekle(1);
-
 
         wait.until(ExpectedConditions.elementToBeClickable(appointmentDepartmentDD)).click();
         WebElement dept = wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath("//div[@class='nice-select wide open']//li[text()='Vaccinations']")));
         dept.click();
 
-
         wait.until(ExpectedConditions.elementToBeClickable(appointmentDoctorDD)).click();
         WebElement doctor = wait.until(ExpectedConditions.presenceOfElementLocated(
                 By.xpath("//div[@class='nice-select wide open']//li[contains(.,'Dr. Isabella Wong')]")));
         actions.moveToElement(doctor).pause(Duration.ofMillis(300)).click(doctor).perform();
-        ReusableMethods.bekle(1);
-
 
         actions.sendKeys(Keys.TAB).sendKeys(Keys.TAB).sendKeys(Keys.TAB).perform();
-        ReusableMethods.bekle(1);
 
-
-        appointmentMessageArea.sendKeys("Pozitif Test - Başarılı randevu oluşturma");
-
+        appointmentMessageArea.sendKeys(" tC06_Pozitif Test - Başarılı randevu oluşturma");
 
         actions.moveToElement(appointmentSubmitBtn).click().perform();
         ReusableMethods.bekle(3);
 
-
         String expectedMessage = "Congratulations on your well-deserved success.";
-        Assert.assertEquals(successMessage.getText(), expectedMessage, "💛 HATA: Başarı mesajı doğrulanamadı!");
+        String actualMessage = successMessage.getText();
+
+        softAssert.assertEquals(actualMessage, expectedMessage,
+                " tC06_Başarı mesajı doğrulanamadı!");
+
+        softAssert.assertAll();
     }
 
     @Test(priority = 3, dependsOnMethods = {"tC06_pozitifTestRandevuOlusturma"})
     public void tC07_anasayfayaYonlendirmeTest() {
-        String expectedUrl = "https://qa.loyalfriendcare.com/en/Beds/vaccinations-room"; // Mevcut URL
+        SoftAssert softAssert = new SoftAssert();
+
+        String expectedUrl = "https://qa.loyalfriendcare.com/en/Beds/vaccinations-room";
         String currentUrl = Driver.getDriver().getCurrentUrl();
 
-        Assert.assertEquals(currentUrl, expectedUrl,
-                "💛 HATA: Kullanıcı Randevu sonrası Asayfaya yönlendirilmedi! Mevcut URL: " + currentUrl);
-    }
+        softAssert.assertEquals(currentUrl, expectedUrl,
+                " tC07_Kullanıcı randevu sonrası yönlendirilmedi! Mevcut URL: " + currentUrl);
 
+        softAssert.assertAll();
+    }
 
     @AfterClass
     public void tearDownClass() {
         Driver.quitDriver();
     }
-
 }
