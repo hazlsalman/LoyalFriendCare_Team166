@@ -48,8 +48,7 @@ public class SudePage {
 
 
      //US_015 için
-    @FindBy (xpath = "//div[@class='collapse show']")
-    public List<WebElement> solTarafDepartmentList;
+
     @FindBy(xpath = "(//div[@class='row'])[2]")
     public List<WebElement> DepartmanlarınTamamı;
     @FindBy(xpath = "(//div[@class='row'])[1]")
@@ -69,6 +68,15 @@ public WebElement BookingButton;
 @FindBy (xpath = "//div[@role='alert']")
 public WebElement RandevuOnayMesajı;
 
+//US_016 için
+ @FindBy (xpath = "(//div[@class='row'])[1]")
+ public List<WebElement> DoktorlarinMenusununTamami;
+ @FindBy (xpath = "(//div[@class='row'])[2]")
+ public List<WebElement> DoktorMenuDetay;
+@FindBy (xpath = "//div[@class='col-lg-8']")
+public WebElement DoktorDescription;
+@FindBy(xpath = "//section[@id='reviews']")
+public WebElement DoktorReview;
 
 
 
