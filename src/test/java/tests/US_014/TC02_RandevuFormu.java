@@ -11,14 +11,14 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.yaprakPage;
+import pages.YaprakPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 import utilities.ReusableMethods;
 
 import java.time.Duration;
 
-public class TC02_RandevuFormu extends yaprakPage {
+public class TC02_RandevuFormu extends YaprakPage {
 
 
 
