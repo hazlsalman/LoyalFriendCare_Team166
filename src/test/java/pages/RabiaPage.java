@@ -5,8 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
-public class RabiaPage {
-    public RabiaPage(){
+public class rabiaPage {
+    public rabiaPage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
@@ -40,44 +40,8 @@ public class RabiaPage {
     @FindBy (xpath = "//*[@id=\"menu\"]/ul/li[6]/span/a")
     public WebElement  headerVaccinationsMenu;
 
-    @FindBy (xpath = "//*[@id=\"page\"]/main/div/div[1]/a\n")
-    public WebElement  bodyDeparments;
 
-    @FindBy (xpath = "//*[@id=\"page\"]/main/div/div[2]/div[1]/a/figure/div\n")
-    public WebElement  bodyWellnes;
 
-    @FindBy (xpath = "//*[@id=\"page\"]/main/div/div[3]/a\n")
-    public WebElement  bodyDoctors;
-
-    @FindBy (xpath = "//*[@alt='Dr. Alejandro Martinez']")
-    public WebElement  bodyDrAlejandroMartinez;
-
-    @FindBy (xpath = "//*[@id=\"page\"]/main/div/div[5]/a")
-    public WebElement  bodyVaccinations;
-
-    @FindBy (xpath = "(//*[@alt='Rabies Vaccine'])[1]")
-    public WebElement  bodyRabiesVaccine;
-
-    @FindBy (xpath = "(//*[@class='container margin_60_35'])[1]")
-    public WebElement  tumBody;
-
-    @FindBy (xpath = "(//*[@class='container margin_60_35'])[2]")
-    public WebElement  tumFooter;
-
-    @FindBy (xpath = "(//*[@class='logo_sticky'])[1]")
-    public WebElement  footerLogo;
-
-    @FindBy (xpath = "//*[@id=\"collapse_ft_2\"]/ul/li[1]/a")
-    public WebElement  footerWellnes;
-
-    @FindBy (xpath = "//*[@class='fab fa-facebook-square']")
-    public WebElement  footerFacebook;
-
-    @FindBy (xpath = "//*[@data-target='#collapse_ft_2']")
-    public WebElement  footerDeparmentsYazi;
-
-    @FindBy (xpath = "//*[@class='form-control']")
-    public WebElement  aramaKutusu;
 
 
 
