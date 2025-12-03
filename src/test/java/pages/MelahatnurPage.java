@@ -53,6 +53,27 @@ public class MelahatnurPage {
     @FindBy(xpath = "//input[@id='submit-contact-detail']")
     public WebElement  appointmentBookingButonu;
 
+    @FindBy (xpath = "//*[@alt='Dr. Alejandro Martinez']")
+    public WebElement doktorKartAlejandro;
+
+    @FindBy (xpath = "//*[@alt='Wellness']")
+    public WebElement bolumKartWelness;
+
+    @FindBy(id = "Date")
+    public WebElement randevuTarihKutusu;
+
+    @FindBy(xpath = "//input[@id='serial']")
+    public WebElement randevuTelefonKutusu;
+
+    @FindBy(xpath = "//textarea[@placeholder='Create Message']")
+    public WebElement randevuMesajKutusu;
+
+    @FindBy(xpath = "//div[contains(text(),'well-deserved success')]")
+    public WebElement randevuOnayMesaji;
+
+    @FindBy(xpath = "//input[@id='submit-contact-detail']")
+    public WebElement  appointmentBookingButonu;
+
 
 
 
