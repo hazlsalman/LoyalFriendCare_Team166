@@ -36,7 +36,7 @@ public class TC003_UserNameVisibilityTest {
 
         // 6) Header’da görünen kullanıcı adı doğru mu?
         String actualUserName = ardaPage.headerUserName.getText().trim();
-        String expectedUserName = "admin.atakan.durman";
+        String expectedUserName = "admin.hazal.salman";
 
         Assert.assertEquals(actualUserName, expectedUserName,
                 "Görünen kullanıcı adı yanlış!");
