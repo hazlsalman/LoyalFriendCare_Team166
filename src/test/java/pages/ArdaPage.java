@@ -74,6 +74,67 @@ public class ArdaPage {
     @FindBy(xpath = "//nav[@class='page-sidebar']")
     public WebElement sidebarMenu;
 
+    @FindBy(xpath = "//h1[contains(text(),'Database')]")
+    public WebElement dashboardTitle;
+    @FindBy(xpath = "//span[text()='Medicines']/ancestor::li[contains(@class,'open')]//ul[@class='sub-menu']/li")
+    public List<WebElement> medicinesSubmenuList;
+    @FindBy(xpath = "//ul[@class='sub-menu']//a[contains(text(),'Medicines')]")
+    public WebElement submenuMedicines;
+    @FindBy(xpath = "//div[@class='card-body']//table//tbody//tr")
+    public List<WebElement> medicinesTableRows;
+
+    @FindBy(xpath = "//div[@class='card-title' and text()='Table Medicines']")
+    public WebElement tableMedicinesTitle;
+
+    @FindBy(xpath = "//table[contains(@class,'table')]")
+    public WebElement medicinesTableArea;
+
+    @FindBy(id = "search-table")
+    public WebElement medicinesSearchBox;
+
+
+    @FindBy(xpath = "//table[contains(@class,'table')]//tbody/tr[1]/td[2]")
+    public WebElement firstMedicineName;
+    @FindBy(xpath = "(//a[contains(@class,'fa-edit')])[1]")
+    public WebElement firstMedicineEditButton;
+
+    @FindBy(id = "Title_en")
+    public WebElement medicineTitleInput;
+
+    @FindBy(id = "body_en")
+    public WebElement medicineContentInput;
+
+    @FindBy(xpath = "//button[contains(@class,'fa-save')]")
+    public WebElement medicineSaveButton;
+    @FindBy(id = "Title_en")
+    public WebElement editMedicineTitle;
+    @FindBy(id = "body_en")
+    public WebElement editMedicineContent;
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement saveMedicineButton;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
