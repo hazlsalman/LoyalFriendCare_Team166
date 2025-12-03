@@ -49,4 +49,13 @@ public class FerhatPage {
 
     @FindBy(xpath = "//td[@class='v-align-middle semi-bold sorting_1']")
     public List<WebElement> kullaniciList;
+
+    @FindBy(xpath = "//a[@rel='next']")
+    public WebElement nextButton;
+
+    @FindBy(xpath = "(//button[@type='submit'])[1]")
+    public WebElement deleteButton;
+
+    @FindBy(xpath = "//span[text()='User deleted successfully']")
+    public WebElement basariText;
 }
