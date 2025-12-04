@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import pages.EnesPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class TC_01 {
     @Test
@@ -18,7 +19,7 @@ public class TC_01 {
         enesPage.userNameKutu.sendKeys(ConfigReader.getProperty("userGecerliMail"));
         enesPage.passwordKutu.sendKeys(ConfigReader.getProperty("userGecerliPassword"));
         enesPage.logInSignIn.click();
-        String expectedGorunenUsername="user.atakan.durman";
+        String expectedGorunenUsername="user.hazal.salman";
         String actualGorunenUsername=enesPage.gorunenUserName.getText();
         System.out.println(actualGorunenUsername);
         Assert.assertEquals(actualGorunenUsername,expectedGorunenUsername);

@@ -32,7 +32,7 @@ Kayıtlı veya yönetici kullanıcı, username'sini sağ üst köşede görür v
         enesPage.userNameKutu.sendKeys(ConfigReader.getProperty("userGecerliMail"));
         enesPage.passwordKutu.sendKeys(ConfigReader.getProperty("userGecerliPassword"));
         enesPage.logInSignIn.click();
-       String expectedGorunenUsername="user.atakan.durman";
+       String expectedGorunenUsername="user.hazal.salman";
        String actualGorunenUsername=enesPage.gorunenUserName.getText();
         System.out.println(actualGorunenUsername);
        Assert.assertEquals(actualGorunenUsername,expectedGorunenUsername);
