@@ -1,18 +1,18 @@
 package tests.us_020;
 
 import org.testng.annotations.Test;
-import pages.WadoudPage;
+import pages.WadoudPages;
 import utilities.ConfigReader;
 import utilities.Driver;
 
 public class TC01_GirisFormuAlanlariGorunurlugu {
 
-    WadoudPage pages;
+    WadoudPages pages;
 
     @Test
     public void us_020_TC01_GirisFormuAlanlariGorunurlugu(){
 
-        pages = new WadoudPage();
+        pages = new WadoudPages();
         Driver.getDriver().get(ConfigReader.getProperty("url"));
 
         pages.mainSignInButton.click();
@@ -26,11 +26,5 @@ public class TC01_GirisFormuAlanlariGorunurlugu {
         Driver.quitDriver();
     }
 
-    @Test
-    public void us_020_TC06_(){
-
-        pages = new WadoudPage();
-
-    }  //GirisSonrasiSekmelerinGorunmesiErisilmesi
 
 }
