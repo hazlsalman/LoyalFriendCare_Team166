@@ -61,7 +61,6 @@
             ReusableMethods.bekle(2);
             yaprakPage.saveButton.click();
             ReusableMethods.bekle(2);
-
             String actualUrl = Driver.getDriver().getCurrentUrl();
             String expectedUrlPart = "login";
             softAssert.assertTrue(actualUrl.contains(expectedUrlPart),
@@ -71,7 +70,6 @@
                 System.out.println("test01_EditProfileAndVerifyRedirect : Kullanıcı Login sayfasına yönlendirildi.");
                 extentTest.pass("test01_EditProfileAndVerifyRedirect : Login sayfasına yönlendirme doğrulandı.");
             }
-
             softAssert.assertAll();
         }
 
