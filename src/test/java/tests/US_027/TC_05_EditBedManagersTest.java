@@ -99,7 +99,6 @@ public void test01() throws InterruptedException {
         hakimPage.bedPrice.sendKeys("333");
 
         //5-) SAVE BUTONUNA TIKLA
-
         actions = new Actions(Driver.getDriver());
         actions.moveToElement(hakimPage.bedManagersSaveButton).click().perform();
 
