@@ -35,7 +35,7 @@ public class MelahatnurPage {
     @FindBy(xpath = "//a[text() =' Sign Out']")
     public WebElement signOutButonu;
 
-    @FindBy(xpath = "//*[contains(text(),'admin.atakan.durman')]")
+    @FindBy(xpath = "//*[contains(text(),'admin.hazal.salman')]")
     public WebElement adminPaneliButonu;
 
     @FindBy(xpath = "//span[.='Roles']")
@@ -59,8 +59,8 @@ public class MelahatnurPage {
     @FindBy (xpath = "//*[@alt='Dr. Alejandro Martinez']")
     public WebElement doktorKartAlejandro;
 
-    @FindBy (xpath = "//*[@alt='Wellness']")
-    public WebElement bolumKartWelness;
+    @FindBy (xpath = "//span[.='Wellness']")
+    public WebElement departmanSecmeWellness;
 
     @FindBy(id = "Date")
     public WebElement randevuTarihKutusu;
@@ -77,8 +77,13 @@ public class MelahatnurPage {
     @FindBy(xpath = "//input[@id='submit-contact-detail']")
     public WebElement  appointmentBookingButonu;
 
-    @FindBy(xpath = "//div[contains(@class,'error') or contains(text(),'phone')]")
-    public WebElement phoneErrorMessage;
+    @FindBy (xpath = "//li[.='NO Bed Departments']")
+    public WebElement NoDepartments;
+
+    @FindBy (xpath = "//li[.='Dr. Alejandro Martinez']")
+    public WebElement doctorSecme;
+
+
 
 
 
