@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utilities.Driver;
 
+import java.util.List;
+
 public class RabiaPage {
     public RabiaPage(){
         PageFactory.initElements(Driver.getDriver(),this);
@@ -80,6 +82,70 @@ public class RabiaPage {
     public WebElement  aramaKutusu;
 
 
+
+
+    @FindBy (xpath = "(//*[@class='btn_add'])[1]")
+    public WebElement signInButton;
+
+    @FindBy (xpath = "(//*[@class=\"form-control \"])[1]")
+    public WebElement  userNameKutu;
+
+    @FindBy (xpath = "(//*[@class=\"form-control \"])[2]")
+    public WebElement  passwordKutu;
+
+    @FindBy (xpath = "//*[@class=\"btn btn-primary btn-cons m-t-10\"]")
+    public WebElement  logInSignIn;
+
+    @FindBy (xpath = "//*[@class='btn_add'][1]")
+    public WebElement gorunenUserName;
+
+    @FindBy (xpath = "/html/body/nav/div[2]/div[1]/ul/li[13]/a/span")
+    public WebElement  deashboardVaccinations;
+
+    @FindBy (xpath = "//*[@class=\"page-sidebar\"]")
+    public WebElement  deashboardMenu;
+
+    @FindBy (xpath = "//*[@class=\"card-body\"][1]")
+    public WebElement galeriText;
+
+    @FindBy (xpath = "//*[@id=\"tableWithSearch\"]/tbody")
+    public List<WebElement> asiListesiBody;
+
+    @FindBy (xpath = "//*[@class=\"form-control pull-right\"]")
+    public WebElement  asiAramaKutusu;
+
+    @FindBy (xpath = "/html/body/div[1]/div[2]/div[1]/div[2]/div/div[2]/nav/a")
+    public WebElement  nextButton;
+
+    @FindBy (xpath = "//*[@class=\"btn btn-danger btn-cons btn-animated from-top fa  fa-remove\"]\n")
+    public WebElement  deleteButton;
+
+    @FindBy (xpath = "/html/body/div[1]/div[2]/div[1]/div/div/span")
+    public WebElement basariliSilme;
+
+    @FindBy (xpath = "/html/body/div[1]/div[2]/div[1]/div[2]/div/div[1]/div/div[1]/div")
+    public WebElement basariliAsiEklemeYazi;
+
+    @FindBy (xpath = "//*[@class=\"btn btn-tag btn-success btn-tag-rounded\"]\n")
+    public WebElement addVaccinationsButton;
+
+    @FindBy (xpath = "//*[@class=\"btn btn-success btn-cons btn-animated from-left fa fa-save pull-right\"]\n")
+    public WebElement saveButton;
+
+    @FindBy (xpath = "/html/body/div[1]/div[2]/div[1]/div[2]/div/div[1]/div/div[1]/div")
+    public WebElement asiEklemesayfasiText;
+
+    @FindBy (xpath = "//*[@id=\"Title_en\"]\n")
+    public WebElement petsTitleForm;
+
+    @FindBy (xpath = "//*[@id=\"body_en\"]")
+    public WebElement contentPetsForm;
+
+    @FindBy (xpath = "//*[@id=\"price\"]")
+    public WebElement petsPriceForm;
+
+    @FindBy (xpath = "/html/body/div[1]/div[2]/div[1]/div/div/span")
+    public WebElement asiEklemOnay;
 
 
 
