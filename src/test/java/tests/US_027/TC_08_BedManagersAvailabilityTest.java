@@ -18,7 +18,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
 
     HakimPage hakimPage = new HakimPage();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-
+    Actions actions = new Actions(Driver.getDriver());
     @Test
     public void test01() throws InterruptedException, IOException {
 
@@ -51,7 +51,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
         wait.until(ExpectedConditions.elementToBeClickable(hakimPage.SettingsButton)).click();
 
         // 2-) SOLDAN AÇILAN SİDEBAR MENÜYÜ, SOLA HOVER İLE AÇ
-        Actions actions = new Actions(Driver.getDriver());
+        actions = new Actions(Driver.getDriver());
         wait.until(ExpectedConditions.visibilityOf(hakimPage.bedManagersParent));
         actions.moveToElement(hakimPage.bedManagersParent).perform();
 
@@ -63,7 +63,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
 
         // Dashboard yüklenene kadar bekle
         wait.until(ExpectedConditions.urlContains("/Dashboard/Posts"));
-        Thread.sleep(2000);
+        Thread.sleep(1500);
 
         // =========================================================
         // 1. YATAK İÇİN TEST - 4 FOTOĞRAF
@@ -86,7 +86,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
                 .findElement(By.xpath("(//a[contains(@class,'fa-edit') and .//span[text()='Edit']])[1]"));
         wait.until(ExpectedConditions.elementToBeClickable(firstEditButton)).click(); //Edit butonuna bas.
 
-        Thread.sleep(2000);// Edit sayfası yüklenene kadar bekle.
+        Thread.sleep(1500);// Edit sayfası yüklenene kadar bekle.
 
 
         WebElement firstAvailabilityToggle = wait.until(ExpectedConditions.visibilityOfElementLocated(
@@ -118,7 +118,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
         // Save butonuna tıkla.
         actions.moveToElement(hakimPage.bedManagersSaveButton).click().perform();
         wait.until(ExpectedConditions.urlContains("/Dashboard/Posts"));
-        Thread.sleep(2000);
+        Thread.sleep(1500);
 
         // Dashboard sayfasının fotoğrafını çek.
         String resim4 = ReusableMethods.raporaResimEkle("4-)Dashboard_FirstBed_AfterEdit");
@@ -151,7 +151,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
         WebElement secondEditButton = Driver.getDriver()
                 .findElement(By.xpath("(//a[contains(@class,'fa-edit') and .//span[text()='Edit']])[2]"));
         wait.until(ExpectedConditions.elementToBeClickable(secondEditButton)).click();
-        Thread.sleep(2000);
+        Thread.sleep(1500);
 
         WebElement secondAvailabilityToggle = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 By.cssSelector("span.switchery.switchery-default")));    // Toggle'ı bul
@@ -181,7 +181,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
         // Save butonuna tıkla.
         actions.moveToElement(hakimPage.bedManagersSaveButton).click().perform();
         wait.until(ExpectedConditions.urlContains("/Dashboard/Posts"));
-        Thread.sleep(2000);
+        Thread.sleep(1500);
 
         // Dashboard sayfasının fotoğrafını çek.
         String resim8 = ReusableMethods.raporaResimEkle("8-)Dashboard_SecondBed_AfterEdit");
