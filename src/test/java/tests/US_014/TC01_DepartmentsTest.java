@@ -52,14 +52,11 @@ public class TC01_DepartmentsTest extends YaprakPage {
                     departmanAdi + " görünmüyor!");
             softAssert.assertTrue(departman.isEnabled(),
                     departmanAdi + " tıklanabilir değil!");
-            // Tıklama işlemi
             departman.click();
             ReusableMethods.bekle(1);
-            // URL Kontrolü
             String currentUrl = Driver.getDriver().getCurrentUrl();
             softAssert.assertTrue(currentUrl.contains("Departments") || currentUrl.contains("department"),
                     "HATA: " + departmanAdi + " sayfası açılmadı! URL: " + currentUrl);
-            // Geri gel
             Driver.getDriver().navigate().back();
             ReusableMethods.bekle(1);
         }

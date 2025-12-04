@@ -14,30 +14,22 @@ public class TC01_ImageCheckbox extends YaprakPage {
     @BeforeClass
     public void setupAdminPaneliLogin() {
         Driver.getDriver().get(ConfigReader.getProperty("url"));
-
         SoftAssert softAssert = new SoftAssert();
-
         anasayfaSigninButonu.click();
         ReusableMethods.bekle(1);
         anasayfaEmailKutusu.sendKeys(ConfigReader.getProperty("adminGecerliMail"));
         anasayfaPasswordKutusu.sendKeys(ConfigReader.getProperty("adminGecerliPassword"));
         anasayfaSigninGirisButonu.click();
         ReusableMethods.bekle(2);
-
-
         softAssert.assertTrue(adminPanelLinki.isDisplayed(),
                 "tC01_Giriş yapılamadı veya Admin butonu görünmedi!");
-
         adminPanelLinki.click();
         ReusableMethods.bekle(2);
-
         softAssert.assertTrue(profilMenuButonu.isDisplayed(),
                 "tC02_Admin paneline geçiş yapılamadı!");
-
         String currentUrl = Driver.getDriver().getCurrentUrl();
         softAssert.assertTrue(currentUrl.contains("admin"),
                 "tC02_URL'de admin yazmıyor!");
-
         System.out.println("tC02 Admin paneline geçiş başarılı.");
         softAssert.assertAll();
     }

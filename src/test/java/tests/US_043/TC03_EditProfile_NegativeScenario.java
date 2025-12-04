@@ -37,50 +37,35 @@ public class TC03_EditProfile_NegativeScenario extends TestBaseRapor {
         }
     }
 
-
-
     @Test
     public void test02_EditProfile_NegativeScenario() throws IOException {
         extentTest = extentReports.createTest("Edit Profile Negatif Senaryo",
                 "Hatalı bilgiler girildiğinde profil güncelleme işleminin yapılmaması doğrulanır.");
-
         SoftAssert softAssert = new SoftAssert();
-
         yaprakPage.profilMenuButonu.click();
         ReusableMethods.bekle(1);
-
         yaprakPage.profilEditProfileButton.click();
         ReusableMethods.bekle(1);
-
         yaprakPage.editPhoneBox.clear();
         yaprakPage.editPhoneBox.sendKeys("123abc");
         //NOT:👀 Negatif Test yanlış veriler ile test edilmiş ve failed oldugu doğrulanmıştır.
         //Ancak diğer arkadaslar ile ortak kullanılan admin bilgileri oldugu için;
         // sorun yaşanmaması adına aşağıdaki doğru şifreler  tekrar geri yazılmıştır.
-
         yaprakPage.editPasswordBox.clear();
         yaprakPage.editPasswordBox.sendKeys("LFCare.0201"); //aaaa
-
         yaprakPage.editPasswordConfirmBox.clear();
         yaprakPage.editPasswordConfirmBox.sendKeys("LFCare.0201");//0000
-
         yaprakPage.editEmailBox.clear();
         yaprakPage.editEmailBox.sendKeys("admin.hazal.salman@loyalfriendcare.com");
-
-
         yaprakPage.saveButton.click();
         ReusableMethods.bekle(2);
-
-        // Login sayfasına yönlendirme OLMAMALI
         String actualUrl = Driver.getDriver().getCurrentUrl();
-
         if (actualUrl.contains("login")) {
             extentTest.fail(" Hatalı bilgilerle SAVE yapıldı ve login sayfasına yönlendirildi!");
             Assert.fail("Negatif senaryo failed !  Hatalı bilgilerle SAVE yapıldı ve login sayfasına yönlendirildi! HATA Uyarısı VERMEDİ! URL: " + actualUrl);
         } else {
             extentTest.pass("Negatif senaryo doğru: Hatalı bilgilerle işlem yapılmadı, yönlendirme yok.");
         }
-
     }
     @AfterClass
     public void tearDownClass() {
