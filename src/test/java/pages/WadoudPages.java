@@ -7,9 +7,9 @@ import utilities.Driver;
 
 import java.util.List;
 
-public class WadoudPages {
+public class WadoudPage {
 
-        public WadoudPages() { PageFactory.initElements(Driver.getDriver(), this); }
+        public WadoudPage() { PageFactory.initElements(Driver.getDriver(), this); }
 
         @FindBy(xpath = "(//*[@class='btn_add'])[1]")
         public WebElement mainSignInButton;
