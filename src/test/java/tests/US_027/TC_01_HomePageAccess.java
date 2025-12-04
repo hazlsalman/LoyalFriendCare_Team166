@@ -16,12 +16,12 @@ public class TC_01_HomePageAccess {
             // 2- Anasayfa açıldığını doğrula.
             Assert.assertTrue(
                     Driver.getDriver().getCurrentUrl().contains("loyalfriendcare"),
-                    "Anasayfa görüntülenemedi."
-            );
+                    "Anasayfa görüntülenemedi.");
 
             // 3- Driver'ı kapat.
             Driver.quitDriver();
         }
-    }
+
+}
 
 

@@ -39,8 +39,6 @@ public class TC_03_LoginTest {
                 "PASSWORD kutusu görünmüyor.");
 
 
-
-
         // =========================================================
         // NEGATİF SENARYOLAR
         // =========================================================
@@ -84,8 +82,6 @@ public class TC_03_LoginTest {
 
 
         System.out.println(" Yanlış email senaryosu tamamlandı\n");
-
-
 
 
         // ---------------- SENARYO 4: EMAIL DOĞRU, ŞİFRE YANLIŞ GİR. ----------------
