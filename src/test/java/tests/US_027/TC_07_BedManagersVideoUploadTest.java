@@ -14,7 +14,6 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 import utilities.TestBaseRapor;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
@@ -85,7 +84,7 @@ public class TC_07_BedManagersVideoUploadTest extends TestBaseRapor {
         // =========================================================
 
         // ============= VIDEO DOSYASI HAZIRLIĞI =============
-        String filePath= System.getProperty ("user.dir") + "/src/test/java/test_data/Video(1).mp4";
+        String filePath= System.getProperty ("user.dir") + "/src/test/java/test_data/Video.mp4";
         File videoDosyası= new File(filePath);
 
         System.out.println("Video yolu: " + filePath);
@@ -149,8 +148,7 @@ public class TC_07_BedManagersVideoUploadTest extends TestBaseRapor {
                                 "arguments[0].style.display = 'block';" +
                                 "arguments[0].style.position = 'relative';" +
                                 "arguments[0].style.opacity = '1';",
-                        videoFileInput
-                );
+                        videoFileInput);
             }
 
             System.out.println("File input class: " + videoFileInput.getAttribute("class"));
@@ -171,8 +169,7 @@ public class TC_07_BedManagersVideoUploadTest extends TestBaseRapor {
             // 2. Dropzone'da dosya var mı kontrol (opsiyonel)
             try {
                 WebElement yuklenenDosya = videoUploadFormu.findElement(
-                        By.cssSelector(".dz-preview, .dz-success, .dz-complete")
-                );
+                        By.cssSelector(".dz-preview, .dz-success, .dz-complete"));
                 System.out.println("Video upload preview bulundu!");
                 extentTest.pass("Dropzone'da video önizlemesi görüntülendi");
 
