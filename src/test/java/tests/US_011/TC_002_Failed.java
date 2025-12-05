@@ -11,6 +11,9 @@ import utilities.TestBaseRapor;
 
 public class TC_002_Failed extends TestBaseRapor {
 
+    // Departman detay sayfasında randevu alanlarının görünürlüğünü
+    // ve formun eksik doldurulduğunda uyarı verdiğini doğrulamak
+
     @Test
     public void eksikFormIleRandevuAlmaTesti() {
 

@@ -53,9 +53,6 @@ public class MelahatnurPage {
     @FindBy(xpath = "//a[.='Learn More at Bed managers']")
     public WebElement ozetBilgiButonu;
 
-    @FindBy(xpath = "//a[@class='btn btn-tag btn-success btn-tag-rounded']")
-    public WebElement ozetBilgiTiklanabilirligi;
-
     @FindBy (xpath = "//*[@alt='Dr. Alejandro Martinez']")
     public WebElement doktorKartAlejandro;
 
