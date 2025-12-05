@@ -12,13 +12,6 @@ public class TC_001 {
 
     //Body bölümündeki departman kartlarının görünürlüğünü
     // ve tıklanabilirliğini doğrulamak
-    // Departman detay sayfasında randevu alanlarının görünürlüğünü
-    // ve formun eksik doldurulduğunda uyarı verdiğini doğrulamak failed
-
-
-
-
-
 
     @Test
     public void departmanDetayTest01() {
@@ -50,15 +43,5 @@ public class TC_001 {
 
         Driver.quitDriver();
     }
-       //  randevu alanlarının formun eksik doldurulduğunda uyarı verdiğini doğrulamak
-
-    @Test (dependsOnMethods = "siteyegirisTest")
-    public void randevuolusturmaTesti() {
-
-
-        }
-
-
-    }
-
+}
 

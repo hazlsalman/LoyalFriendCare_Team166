@@ -13,8 +13,6 @@ public class TC_001_002_003 {
     //Admin hesabıyla giriş sonrası admin paneline erişimi doğrulamak
     //Sağ üstteki admin butonunun çalışmasını ve doğru kullanıcı adını doğrulamak
     //Sol menü başlıklarının ve alt seçeneklerin görünürlüğünü ve tıklanabilirliğini doğrulamak
-    //Dashboard özet bilgilerinin görünürlüğünü ve “Learn More” linklerini doğrulamak
-    //Dashboard erişiminin yalnızca admin kullanıcılar için çalıştığını doğrulamak
 
     MelahatnurPage melahatnurPage = new MelahatnurPage();
 
@@ -61,6 +59,11 @@ public class TC_001_002_003 {
         ReusableMethods.bekle(2);
 
         // alt secenegin gorunur ve tiklanabilirligi
+
+        melahatnurPage.createRolesElementi.click();
+        ReusableMethods.bekle(2);
+
+        Assert.assertTrue(melahatnurPage.displayNameElementi.isDisplayed());
 
         Driver.quitDriver();
     }
