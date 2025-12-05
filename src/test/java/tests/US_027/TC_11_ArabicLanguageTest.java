@@ -106,7 +106,8 @@ public class TC_11_ArabicLanguageTest extends TestBaseRapor {
         ReusableMethods.bekle(1);
 
         String resim2 = ReusableMethods.raporaResimEkle("B-)ArabicLanguage_Title_Content_Filled");
-        extentTest.info("2-) Arabic Title ve Content alanları dolduruldu ancak Arapça karakter girilemedi ve ekran görüntüsü alındı.")
+        extentTest.info("2-) Arabic Title ve Content alanları dolduruldu ve bu haliyle ekran görüntüsü alındı. " +
+                        "Bu alanlara Arap alfabesindeki harfler kullanılarak data girilemedi. Sonuç failed'dır.")
                 .addScreenCaptureFromPath(resim2);
 
         // Son girilen metinleri temizle
@@ -123,8 +124,8 @@ public class TC_11_ArabicLanguageTest extends TestBaseRapor {
 
         ReusableMethods.bekle(1);
         String resim3 = ReusableMethods.raporaResimEkle("C-)ArabicLanguage_Save_Success");
-        extentTest.pass("3-) Arabic Title & Content alanlarına metin girildi (Arapça karakterlerle girilemedi). " +
-                        "Save butonuna basıldıktan sonra başarı mesajının ekran görüntüsü alındı.")
+        extentTest.pass("3-) Arabic Title & Content alanlarına metin girildi." +
+                        "Save butonuna basıldıktan sonra açılan sayfada sağ üstteki 'başarılı kayıt' mesajının ekran görüntüsü alındı.")
                 .addScreenCaptureFromPath(resim3);
 
 
