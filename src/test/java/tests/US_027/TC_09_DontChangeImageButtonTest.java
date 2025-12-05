@@ -17,7 +17,7 @@ public class TC_09_DontChangeImageButtonTest {
 
       HakimPage hakimPage = new HakimPage();
       WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-
+      Actions actions = new Actions(Driver.getDriver());
       @Test
       public void test01() throws InterruptedException {
 
@@ -48,7 +48,7 @@ public class TC_09_DontChangeImageButtonTest {
             wait.until(ExpectedConditions.elementToBeClickable(hakimPage.SettingsButton)).click();
 
             // 2-) SOLDAN AÇILAN SİDEBAR MENÜYÜ, SOLA HOVER İLE AÇ
-            Actions actions = new Actions(Driver.getDriver());
+            actions = new Actions(Driver.getDriver());
             wait.until(ExpectedConditions.visibilityOf(hakimPage.bedManagersParent));
             actions.moveToElement(hakimPage.bedManagersParent).perform();
 

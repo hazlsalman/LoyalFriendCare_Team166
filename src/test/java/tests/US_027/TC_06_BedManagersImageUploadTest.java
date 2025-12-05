@@ -14,7 +14,6 @@ import utilities.Driver;
 import java.time.Duration;
 import java.io.File;
 
-
     public class TC_06_BedManagersImageUploadTest {
 
         HakimPage hakimPage = new HakimPage();
@@ -74,7 +73,7 @@ import java.io.File;
             Thread.sleep(300);
 
             // 2-) Dosya yolu hazırla
-            String filePath = System.getProperty("user.dir") + "/src/test/java/test_data/Image(1).png";
+            String filePath = System.getProperty("user.dir") + "/src/test/java/test_data/Image.png";
             File resimDosyası = new File(filePath);
 
             System.out.println("Dosya yolu: " + filePath);
@@ -98,8 +97,7 @@ import java.io.File;
             // 6-) Yüklenen resmin sayfada göründüğünü kontrol et (opsiyonel)
             try {
                 WebElement uploadedPreview = wait.until(ExpectedConditions.presenceOfElementLocated(
-                        By.cssSelector(".dz-preview, .dz-image, .dz-success")
-                ));
+                        By.cssSelector(".dz-preview, .dz-image, .dz-success")));
                 System.out.println(" Resim başarıyla yüklendi.");
             } catch (Exception e) {
                 System.out.println(" Resim önizlemesi bulunamadı ama devam ediliyor.");

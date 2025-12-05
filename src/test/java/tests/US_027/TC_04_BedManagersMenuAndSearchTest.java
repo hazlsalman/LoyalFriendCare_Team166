@@ -15,7 +15,7 @@ public class TC_04_BedManagersMenuAndSearchTest {
 
     HakimPage hakimPage = new HakimPage();
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-
+    Actions actions = new Actions(Driver.getDriver());
     @Test
     public void test01() throws InterruptedException {
 
@@ -44,21 +44,17 @@ public class TC_04_BedManagersMenuAndSearchTest {
         // =========================================================
 
         // 1-) ⚙ AYARLAR SİMGESİNE TIKLA
-
         wait.until(ExpectedConditions.elementToBeClickable(hakimPage.SettingsButton)).click();
 
         // 2-) SOLDAN AÇILAN SİDEBAR MENÜYÜ, SOLLA HOVER İLE AÇ
-
-        Actions actions = new Actions(Driver.getDriver());
+        actions = new Actions(Driver.getDriver());
         wait.until(ExpectedConditions.visibilityOf(hakimPage.bedManagersParent));
         actions.moveToElement(hakimPage.bedManagersParent).perform();
 
         // 3-) BED MANAGERS MENÜSÜNE TIKLA
-
         wait.until(ExpectedConditions.elementToBeClickable(hakimPage.bedManagersParent)).click();
 
         // 4-) ALT MENÜLERİN AÇILDIĞINI DOĞRULA
-
         wait.until(ExpectedConditions.visibilityOf(hakimPage.subBedManagers));
         wait.until(ExpectedConditions.visibilityOf(hakimPage.createBedManagers));
 

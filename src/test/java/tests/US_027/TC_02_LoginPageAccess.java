@@ -6,8 +6,6 @@ import utilities.Driver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-
-
 public class TC_02_LoginPageAccess {
 
     HakimPage hakimPage = new HakimPage();
