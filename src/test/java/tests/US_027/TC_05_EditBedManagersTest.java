@@ -103,11 +103,9 @@ public void test01() throws InterruptedException {
         actions.moveToElement(hakimPage.bedManagersSaveButton).click().perform();
 
         //6-) DASHBOARD SAYFASINA DÖNÜŞ VE SUCCESS MESAJI
+        wait.until(ExpectedConditions.urlToBe("https://qa.loyalfriendcare.com/en/Dashboard/Posts"));
         wait.until(ExpectedConditions.visibilityOf(hakimPage.successMessage));
         Assert.assertTrue(hakimPage.successMessage.isDisplayed(), "Success mesajı görünmüyor!");
-
-        // Dashboard URL kontrol
-        wait.until(ExpectedConditions.urlToBe("https://qa.loyalfriendcare.com/en/Dashboard/Posts"));
 
         Driver.quitDriver();
     }

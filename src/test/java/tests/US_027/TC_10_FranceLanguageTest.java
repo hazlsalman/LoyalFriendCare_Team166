@@ -114,7 +114,8 @@ public class TC_10_FranceLanguageTest extends TestBaseRapor {
         ReusableMethods.bekle(1);
 
         String resim2 = ReusableMethods.raporaResimEkle("II-)FranceLanguage_Title_Content_Filled");
-        extentTest.info("2-)Fransızca Title ve Content alanları dolduruldu ve bu haliyle ekran görüntüsü alındı.")
+        extentTest.info("2-)Fransızca Title ve Content alanları dolduruldu ve bu haliyle ekran görüntüsü alındı. " +
+                        "Bu alanlara Fransız alfabesindeki harfler kullanılarak data girilemedi. Sonuç failed'dır.")
                 .addScreenCaptureFromPath(resim2);
 
 
@@ -134,8 +135,8 @@ public class TC_10_FranceLanguageTest extends TestBaseRapor {
 
         ReusableMethods.bekle(1);
         String resim3 = ReusableMethods.raporaResimEkle("III-) FranceLanguage_Save_Success");
-        extentTest.pass("3-)France Language Title & Content alanların metin girildi ve save butonuna basıldı. " +
-                        "Butona basıldıktan sonra dönülen sayfada, sağ üstteki çıkan 'başarılı kayıt' mesajının ekran görüntüsü alındı.")
+        extentTest.pass("3-)France Language Title & Content alanlarına metin girildi ve save butonuna basıldı." +
+                        "Butona basıldıktan sonra dönülen sayfada, sağ üstte çıkan 'başarılı kayıt' mesajının ekran görüntüsü alındı.")
                 .addScreenCaptureFromPath(resim3);
 
         // =========================================================
