@@ -114,6 +114,23 @@ public class ArdaPage {
     public WebElement saveMedicineButton;
 
 
+    @FindBy(id = "Title_en")
+    public WebElement createMedicineTitleInput;
+
+    @FindBy(id = "body_en")
+    public WebElement createMedicineContentInput;
+
+    @FindBy(xpath = "//button[@type='submit' and contains(text(),'Save Medicines')]")
+    public WebElement createMedicineSaveButton;
+
+    @FindBy(xpath = "//h3[contains(text(),'Add Medicines')]")
+    public WebElement addMedicinesPageTitle;
+    @FindBy(xpath = "//a[contains(@href,'Dashboard/Instagrams/create')]")
+    public WebElement createMedicinesLink;
+
+
+
+
 
 
 
