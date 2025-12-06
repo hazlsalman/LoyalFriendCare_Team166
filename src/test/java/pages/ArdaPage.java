@@ -120,13 +120,42 @@ public class ArdaPage {
     @FindBy(id = "body_en")
     public WebElement createMedicineContentInput;
 
-    @FindBy(xpath = "//button[@type='submit' and contains(text(),'Save Medicines')]")
-    public WebElement createMedicineSaveButton;
 
     @FindBy(xpath = "//h3[contains(text(),'Add Medicines')]")
     public WebElement addMedicinesPageTitle;
     @FindBy(xpath = "//a[contains(@href,'Dashboard/Instagrams/create')]")
     public WebElement createMedicinesLink;
+
+    @FindBy(xpath = "//button[@type='submit' and contains(@class,'btn-success')]")
+    public WebElement createMedicineSaveButton;
+    // NEXT BUTTON
+    @FindBy(xpath = "//a[contains(text(),'Next')]")
+    public WebElement nextButton;
+
+    // Invalid medicine row
+    @FindBy(xpath = "//td[contains(@class,'sorting_1') and normalize-space()='*<>%\"']")
+    public WebElement invalidMedicineRow;
+
+    // Invalid medicine edit button
+    @FindBy(xpath = "//td[normalize-space()='*<>%\"']/following-sibling::td//a[contains(@class,'fa-edit')]")
+    public WebElement invalidMedicineEditButton;
+
+    @FindBy(xpath = "//h1[@class='error-number' and text()='404']")
+    public WebElement error404Text;
+
+    @FindBy(xpath = "//span[contains(@class,'text-danger')]")
+    public WebElement requiredFieldErrorMessage;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
