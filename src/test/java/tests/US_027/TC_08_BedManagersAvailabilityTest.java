@@ -63,7 +63,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
 
         // Dashboard yüklenene kadar bekle
         wait.until(ExpectedConditions.urlContains("/Dashboard/Posts"));
-        Thread.sleep(1500);
+
 
         // =========================================================
         // 1. YATAK İÇİN TEST - 4 FOTOĞRAF
@@ -75,7 +75,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
 
         // FOTOĞRAF 1: Dashboard'da 1. yatağın durumu (Edit Butonuna Tıklamadan Öncesi)
         // Önce Dashboard sayfasında fotoğraf çek.
-        String resim1 = ReusableMethods.raporaResimEkle("1-)Dashboard_FirstBed_BeforeEdit");
+        String resim1 = ReusableMethods.raporaResimEkle("1-)DashboardPage_FirstBed_BeforeEdit");
         extentTest.info("FOTOĞRAF 1/8: Dashboard Sayfası - 1.Yatak: AVAILIBLITY DURUM (Edit Öncesi)")
                 .addScreenCaptureFromPath(resim1);
 
@@ -86,7 +86,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
                 .findElement(By.xpath("(//a[contains(@class,'fa-edit') and .//span[text()='Edit']])[1]"));
         wait.until(ExpectedConditions.elementToBeClickable(firstEditButton)).click(); //Edit butonuna bas.
 
-        Thread.sleep(1500);// Edit sayfası yüklenene kadar bekle.
+        ReusableMethods.bekle(1);// Edit sayfası yüklenene kadar bekle.
 
 
         WebElement firstAvailabilityToggle = wait.until(ExpectedConditions.visibilityOfElementLocated(
@@ -121,21 +121,21 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
         Thread.sleep(1500);
 
         // Dashboard sayfasının fotoğrafını çek.
-        String resim4 = ReusableMethods.raporaResimEkle("4-)Dashboard_FirstBed_AfterEdit");
+        String resim4 = ReusableMethods.raporaResimEkle("4-)DashboardPage_FirstBed_AfterEdit");
         extentTest.info("FOTOĞRAF 4/8: Dashboard Sayfası - 1.Yatak: AVAILIBLITY DURUM (Edit Sonrası)")
                 .info("Toggle değişikliği kaydedildi")
                 .addScreenCaptureFromPath(resim4);
 
         extentTest.pass("1. Yatak: Toggle değişikliği tamamlandı.");
-
         extentTest.info("═══════════════════════════════════════");
         extentTest.info("1. YATAK TESTİ TAMAMLANDI");
         extentTest.info("═══════════════════════════════════════");
 
+
+
         // =========================================================
         // 2. YATAK İÇİN TEST - 4 FOTOĞRAF
         // =========================================================
-        extentTest.info("");
         extentTest.info("═══════════════════════════════════════");
         extentTest.info("2. YATAK TESTİ BAŞLADI");
         extentTest.info("═══════════════════════════════════════");
@@ -143,7 +143,7 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
 
         // FOTOĞRAF 5: Dashboard'da 2. yatağın durumu (Edit Butonuna Tıklamadan Öncesi)
         // Önce Dashboard sayfasında fotoğraf çek.
-        String resim5 = ReusableMethods.raporaResimEkle("5-)Dashboard_SecondBed_BeforeEdit");
+        String resim5 = ReusableMethods.raporaResimEkle("5-)DashboardPage_SecondBed_BeforeEdit");
         extentTest.info("FOTOĞRAF 5/8: Dashboard Sayfası - 2.Yatak: AVAILIBLITY DURUM (Edit Öncesi)")
                 .addScreenCaptureFromPath(resim5);
 
@@ -184,13 +184,12 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
         Thread.sleep(1500);
 
         // Dashboard sayfasının fotoğrafını çek.
-        String resim8 = ReusableMethods.raporaResimEkle("8-)Dashboard_SecondBed_AfterEdit");
+        String resim8 = ReusableMethods.raporaResimEkle("8-)DashboardPage_SecondBed_AfterEdit");
         extentTest.info("FOTOĞRAF 8/8: Dashboard Sayfası: - 2.Yatak: AVAILIBLITY DURUM (Edit Sonrası)")
                 .info("Toggle değişikliği kaydedildi")
                 .addScreenCaptureFromPath(resim8);
 
         extentTest.pass("2. Yatak: Toggle değişikliği tamamlandı!");
-
         extentTest.info("═══════════════════════════════════════");
         extentTest.info("2. YATAK TESTİ TAMAMLANDI");
         extentTest.info("═══════════════════════════════════════");
@@ -198,7 +197,11 @@ public class TC_08_BedManagersAvailabilityTest extends TestBaseRapor {
         // =========================================================
         // TEST ÖZETİ
         // =========================================================
-        extentTest.info("");
+        extentTest.info(" Availiblity toogle butonu aktif(clickable) fakat işlevsel değil." +
+                " Buton açıkken kapalı duruma veya kapılı iken açık duruma getirildiğinde, " +
+                "başarılı kayıt mesajına rağmen; dashboard sayfasına dönüldüğünde butonun durumunda herhangi bir değişiklik olmuyor." +
+                "TEST SONUCU: FAILED ");
+
         extentTest.info("TOPLAM 8 FOTOĞRAF ÇEKİLDİ");
         extentTest.info("1. Yatak: 4 fotoğraf");
         extentTest.info("2. Yatak: 4 fotoğraf");
